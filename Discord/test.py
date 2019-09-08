@@ -17,5 +17,7 @@ async def on_message() :
         return
     if message.content == "!" :
         await client.send_message (message.channel, "아아 테스트으으")
+    if message.content == "!아아" :
+        await client.send_message (message.channel, "예에에")
         
 client.run('NjIwMTM3NTY0ODQxNTc0NDIx.XXSa_g.86uJbhZaahja2XuduHHFNW-HM_E')
