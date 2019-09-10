@@ -8,7 +8,6 @@ import jjambab_message
 #---------------------#
 
 client = discord.Client()
-token = os.environ["BOT_TOKEN"]
 
 ########################################################################################
 
@@ -61,5 +60,6 @@ async def on_message(message):
         embed = discord.Embed(title = jjambab_message.yesterday_result, description = jjambab_message.yesterdays_result, color=0xff7b5c)
         embed.set_footer(text=date_message.todayT)
         await client.send_message(message.channel, embed=embed)
-        
+      
+token = os.environ["BOT_TOKEN"]
 client.run(token)
