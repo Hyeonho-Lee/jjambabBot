@@ -1,8 +1,13 @@
 import discord
 import asyncio
+import os
+#---------------------#
+import date_message
+import jjambab_message
+#---------------------#
 
 client = discord.Client()
-token = "NjIwMTM3NTY0ODQxNTc0NDIx.XXSa_g.86uJbhZaahja2XuduHHFNW-HM_E"
+token = os.environ["BOT_TOKEN"]
 
 @client.event
 async def on_ready():
@@ -10,16 +15,22 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print("===================")
-    await client.change_presence (game=discord.Game(name="봇 만들어 보는중", type=1))
+    await client.change_presence (game=discord.Game(name="봇 만들기", type=1))
     
 
 @client.event
-async def on_message():
+async def on_message(message):
     if message.author == client.user:
         return
-    if message.content == "!" :
-        await client.send_message (message.channel, "아아 테스트으으")
-    if message.content == "!아아" :
-        await client.send_message (message.channel, "예에에")        
+    if message.content == "!?" :
+        await client.send_message (message.channel, "아아 테스트으으")     
+    if message.content == "!오늘" :
+        await client.send_message (message.channel, date_message.todays)   
+    if message.content == "!내일" :
+        await client.send_message (message.channel, date_message.tomorrows)  
+    if message.content == "!어제" :
+        await client.send_message (message.channel, date_message.yesterdays)
+    if message.content == "!오늘 짬밥" :
+        await client.send_message (message.channel, jjambab_message.today_result) 
         
 client.run(token)
