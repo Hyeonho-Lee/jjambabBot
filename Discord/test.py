@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import discord
 import asyncio
 import os
@@ -23,7 +24,7 @@ async def on_message(message):
     if message.author == client.user:
         return
     if message.content == "!?" :
-        await client.send_message (message.channel, "아아 테스트으으ㄴ")     
+        await client.send_message (message.channel, "아아 테스트으으ㄴasf")     
     if message.content == "!오늘" :
         await client.send_message (message.channel, date_message.todays)   
     if message.content == "!내일" :
@@ -34,3 +35,6 @@ async def on_message(message):
         await client.send_message (message.channel, jjambab_message.today_result) 
         
 client.run(token)
+=======
+1
+>>>>>>> 3240305b8704446363d3272bf696d93f68ea1e2f
