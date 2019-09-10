@@ -23,7 +23,7 @@ async def on_message(message):
     if message.author == client.user:
         return
     if message.content == "!?" :
-        await client.send_message (message.channel, "아아 테스트으으ㄴㄴㄴ")     
+        await client.send_message (message.channel, "아아 테스트으으ㄴ")     
     if message.content == "!오늘" :
         await client.send_message (message.channel, date_message.todays)   
     if message.content == "!내일" :
