@@ -8,8 +8,7 @@ import jjambab_message
 #---------------------#
 
 client = discord.Client()
-#token = os.environ["BOT_TOKEN"]
-token = 'NjIwMTM3NTY0ODQxNTc0NDIx.XXec5Q.UUF4RPH2e2EfW6-V4z86YzQAtHY'
+token = os.environ["BOT_TOKEN"]
 
 ########################################################################################
 
