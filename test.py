@@ -17,10 +17,10 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print("===================")
-    await client.change_presence (game=discord.Game(name="봇 만들기", type=1))
+    await client.change_presence (game=discord.Game(name="24시간 ", type=1))
     
 ########################################################################################
-    
+"""
 @client.event
 async def on_message(message):
     
@@ -62,5 +62,6 @@ async def on_message(message):
         await client.send_message(message.channel, embed=embed)
       
 #token = os.environ['BOT_TOKEN']
+"""
 token = 'NjIwMTM3NTY0ODQxNTc0NDIx.XXoD7g.YWOzNlqje5Otb7cWzyCFDGqPw0w'
 client.run(token)
