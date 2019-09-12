@@ -1,5 +1,6 @@
 import discord
 import asyncio
+from boto.connection import Boto
 import os
 #---------------------#
 import date_message
@@ -61,5 +62,5 @@ async def on_message(message):
         embed.set_footer(text=date_message.todayT)
         await client.send_message(message.channel, embed=embed)
       
-token = process.env.BOT_TOKEN
+token = Boto(os.enviros['BOT_TOKEN'])
 client.run(token)
