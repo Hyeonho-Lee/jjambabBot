@@ -1,4 +1,5 @@
 #---------------------#
+"""
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from pprint import pprint
@@ -50,3 +51,4 @@ yesterday_result = str(date_message.todayM) + "월" + str(date_message.yesterday
 yesterdays_result = "==========아침==========\n" + yesterday_breakfast + "\n==========점심==========\n" + yesterday_lunch + "\n==========저녁==========\n" + yesterday_dinner + "\n========================"
 
 #print(tomorrow_result)
+"""
