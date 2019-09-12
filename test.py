@@ -61,5 +61,5 @@ async def on_message(message):
         embed.set_footer(text=date_message.todayT)
         await client.send_message(message.channel, embed=embed)
       
-token = os.environ["BOT_TOKEN"]
+token = process.env.BOT_TOKEN
 client.run(token)
