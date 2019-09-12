@@ -1,6 +1,7 @@
 import discord
 import asyncio
 import os
+from boto.s3.connection import S3Connection
 #---------------------#
 import date_message
 import jjambab_message
@@ -61,5 +62,5 @@ async def on_message(message):
         embed.set_footer(text=date_message.todayT)
         await client.send_message(message.channel, embed=embed)
       
-token = os.environ['BOT_TOKEN']
+token = S3Connection(os.environ['BOT_TOKEN'])
 client.run(token)
