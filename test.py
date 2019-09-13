@@ -20,7 +20,7 @@ async def on_ready():
     await client.change_presence (game=discord.Game(name="24시간 ", type=1))
     
 ########################################################################################
-"""
+
 @client.event
 async def on_message(message):
     
@@ -28,6 +28,8 @@ async def on_message(message):
         return
     if message.content == "!?" :
         await client.send_message (message.channel, "아아 테스트으으ㄴasf")     
+        
+"""
         
     #------------------------------------------------------------------------------#
         
