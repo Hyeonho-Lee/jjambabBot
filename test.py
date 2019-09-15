@@ -17,18 +17,19 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print("===================")
-    await client.change_presence (game=discord.Game(name="봇 만들기", type=1))
+    await client.change_presence (game=discord.Game(name="24시간", type=1))
     
 ########################################################################################
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 52839cbf944ba022ea249079ba67a7e82fcaa202
 @client.event
 async def on_message(message):
     
     if message.author == client.user:
         return
-    if message.content == "!?" :
-        await client.send_message (message.channel, "아아 테스트으으ㄴasf")     
         
     #------------------------------------------------------------------------------#
 
@@ -61,9 +62,14 @@ async def on_message(message):
         embed = discord.Embed(title = jjambab_message.yesterday_result, description = jjambab_message.yesterdays_result, color=0xff7b5c)
         embed.set_footer(text=date_message.todayT)
         await client.send_message(message.channel, embed=embed)
+<<<<<<< HEAD
 
 
 token = 'NjIwMTM3NTY0ODQxNTc0NDIx.XXtssg.CodzrJKDYyCt-_OD88Ng2tdjEM0'
+=======
+      
+token = 'NjIwMTM3NTY0ODQxNTc0NDIx.XXoD7g.YWOzNlqje5Otb7cWzyCFDGqPw0w'
+>>>>>>> 52839cbf944ba022ea249079ba67a7e82fcaa202
 client.run(token)
 
 """
