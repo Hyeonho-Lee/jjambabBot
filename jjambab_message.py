@@ -1,5 +1,4 @@
 #---------------------#
-"""
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from pprint import pprint
@@ -39,8 +38,17 @@ for i in range(0, 32):
             yesterday_breakfast = sheet.cell(yesterdayD + 1,2).value
             yesterday_lunch = sheet.cell(yesterdayD + 1, 3).value
             yesterday_dinner = sheet.cell(yesterdayD + 1, 4).value
+
             
-            
+def search_jjambab(result):
+    search = int(result)
+    search_breakfast = sheet.cell(search + 1,2).value
+    search_lunch = sheet.cell(search + 1, 3).value
+    search_dinner = sheet.cell(search + 1, 4).value
+    search_result = str(date_message.todayM) + "월" + str(search) + "일" + " 짬밥입니다\n"
+    searchs_result = "==========아침==========\n" + search_breakfast + "\n==========점심==========\n" + search_lunch + "\n==========저녁==========\n" + search_dinner + "\n========================"
+    return search_result, searchs_result
+
 today_result = str(date_message.todayM) + "월" + str(date_message.todayD) + "일" + " 짬밥입니다\n"
 todays_result = "==========아침==========\n" + today_breakfast + "\n==========점심==========\n" + today_lunch + "\n==========저녁==========\n" + today_dinner + "\n========================"
 
@@ -50,5 +58,5 @@ tomorrows_result = "==========아침==========\n" + tomorrow_breakfast + "\n====
 yesterday_result = str(date_message.todayM) + "월" + str(date_message.yesterdayD) + "일" + " 짬밥입니다\n"
 yesterdays_result = "==========아침==========\n" + yesterday_breakfast + "\n==========점심==========\n" + yesterday_lunch + "\n==========저녁==========\n" + yesterday_dinner + "\n========================"
 
-#print(tomorrow_result)
-"""
+#search_jjambab(10)
+#print(tomorrows_result)
