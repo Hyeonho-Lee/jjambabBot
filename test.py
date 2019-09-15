@@ -1,11 +1,10 @@
 import discord
 import asyncio
-from boto.connection import Boto
 import os
 #---------------------#
 import date_message
 import jjambab_message
-#import on_mess
+import on_mess
 #---------------------#
 
 client = discord.Client()
@@ -21,7 +20,8 @@ async def on_ready():
     await client.change_presence (game=discord.Game(name="봇 만들기", type=1))
     
 ########################################################################################
-    
+
+
 @client.event
 async def on_message(message):
     
@@ -31,7 +31,7 @@ async def on_message(message):
         await client.send_message (message.channel, "아아 테스트으으ㄴasf")     
         
     #------------------------------------------------------------------------------#
-        
+
     if message.content == "/오늘" :
         #await client.send_message (message.channel, date_message.todays)
         embed = discord.Embed(title = "날짜", description=date_message.todays, color=0xff7b5c)
@@ -61,6 +61,32 @@ async def on_message(message):
         embed = discord.Embed(title = jjambab_message.yesterday_result, description = jjambab_message.yesterdays_result, color=0xff7b5c)
         embed.set_footer(text=date_message.todayT)
         await client.send_message(message.channel, embed=embed)
-      
-token = Boto(os.enviros['BOT_TOKEN'])
+
+
+token = 'NjIwMTM3NTY0ODQxNTc0NDIx.XXtssg.CodzrJKDYyCt-_OD88Ng2tdjEM0'
 client.run(token)
+
+"""
+import discord
+
+client = discord.Client()
+
+
+@client.event
+async def on_ready():
+    print(client.user.id)
+    print("ready")
+    game = discord.Game("24시간 실험중")
+    await client.change_presence(status=discord.Status.online, activity=game)
+
+
+
+@client.event
+async def on_message(message):
+    if message.content.startswith("!테스트"):
+        await message.channel.send("안녕하세요")
+
+
+client.run("NjIwMTM3NTY0ODQxNTc0NDIx.XXtssg.CodzrJKDYyCt-_OD88Ng2tdjEM0")
+버전이 봐꼇슴 그래서 저걸로 바꾸자
+"""
