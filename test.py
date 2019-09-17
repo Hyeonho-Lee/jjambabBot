@@ -46,13 +46,13 @@ async def on_message(message):
         
     search_day = ""
 
-        last_text = message.content
-        result_day = re.findall("\d+", last_text)
-        for result in result_day:
-            search_day = result
-        if message.content == "/%s일 짬밥"%search_day:
-            test1, test2 = jjambab_message.search_jjambab(search_day)
-            await message.channel.send(embed=set_embed(test1, test2))
+    last_text = message.content
+    result_day = re.findall("\d+", last_text)
+    for result in result_day:
+        search_day = result
+    if message.content == "/%s일 짬밥"%search_day:
+        test1, test2 = jjambab_message.search_jjambab(search_day)
+        await message.channel.send(embed=set_embed(test1, test2))
         
 #########################################################################
 
