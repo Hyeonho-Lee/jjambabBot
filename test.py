@@ -35,6 +35,9 @@ async def on_message(message):
     if message.author == client.user:
         return
     
+    if message.content.startswith("/?"):
+        await message.channel.send("단결!! \n명령어! /오늘 짬밥 \n/내일 짬밥 \n/어제 짬밥 \n/(원하는 일자)일 짬밥")
+    
     if message.content.startswith("/오늘 짬밥"):
         await message.channel.send(embed=set_embed(jjambab_message.today_result, jjambab_message.todays_result))
         
