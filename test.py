@@ -44,13 +44,13 @@ async def on_message(message):
     if message.content.startswith("/어제 짬밥"):
         await message.channel.send(embed=set_embed(jjambab_message.yesterday_result, jjambab_message.yesterdays_result))
         
-    #숫자 추출
-    if message.content.startswith(message.content):
+    search_day = ""
+
         last_text = message.content
         result_day = re.findall("\d+", last_text)
         for result in result_day:
             search_day = result
-        if message.content.startswith("/" + search_day + "일 짬밥"):
+        if message.content == "/%s일 짬밥"%search_day:
             test1, test2 = jjambab_message.search_jjambab(search_day)
             await message.channel.send(embed=set_embed(test1, test2))
         
