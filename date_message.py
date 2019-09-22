@@ -18,4 +18,7 @@ yesterday = today - datetime.timedelta(days=1)
 yesterdays = yesterday.strftime('어제는 %m월 %d일 입니다.')
 yesterdayD = yesterday.strftime('%d')
 
+def reload_today():
+    today = datetime.datetime.now()
+    
 print(todayT)
