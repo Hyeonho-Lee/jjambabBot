@@ -2,6 +2,7 @@ import discord
 import asyncio
 import os
 import re
+import sys
 #---------------------#
 import date_message
 import jjambab_message
@@ -44,6 +45,7 @@ async def on_message(message):
     result_day = re.findall("\d+", last_text)
     for result in result_day:
         search_day = result
+        
     if message.content == "/%s일 짬밥"%search_day:
         title, description = jjambab_message.search_jjambab(search_day)
         await message.channel.send(embed=set_embed(title, description))
@@ -91,18 +93,49 @@ async def on_message(message):
         
     if message.content == "/근무 추가 %s,%s,%s,%s"%(date,writer,time,content):
         last_index = work_message.last_index()
-        work_message.work_write(last_index+1,date,writer,time,content,last_index+1)
+        work_message.work_write(last_index,date,writer,time,content,last_index+1)
         title, description = work_message.result_work("근무 추가")
         await message.channel.send(embed=set_embed(title, description))
         
+    test = ""
+    
     if message.content == "/근무 보기":
         last_index = work_message.last_index()
         index,date,writer,time,content = work_message.work_all_load()
         title, description = work_message.result_work("근무 보기")
+        test = "번호 | 날짜 | 작성자 | 시간 | 내용"
+        test += "\n---------------------------------------------"
         for i in range(0,last_index-1):
-            text = index[i] + " " + date[i] + " " + writer[i] + " " + time[i] + " " + content[i]
-            await message.channel.send(embed=set_embed(title, text))
+            text = "\n" + index[i] + " | " + date[i] + " | " + writer[i] + " | " + time[i] + " | " + content[i]
+            test += text
+            test += "\n---------------------------------------------"
+        test += "\n"
+        #print(test)
+        await message.channel.send(embed=set_embed(title, test))
+    
+    if message.content == "/근무 삭제":
+        last_index = work_message.last_index()
+        if last_index <= 2:
+            title, description = work_message.result_work("근무 삭제 실패")
+            await message.channel.send(embed=set_embed(title, test))
+        else:
+            work_message.work_delete(last_index)
+            title, description = work_message.result_work("근무 삭제")
+            await message.channel.send(embed=set_embed(title, test))
+        
+    #delete_index = ""
+    
+    #last_text = message.content
+    #result_text = re.findall("\d+", last_text)
+    #for result in result_text:
+        #delete_index = result
+        
+    #if message.content == "/근무 삭제 %s"%delete_index:
+        #last_index = work_message.last_index()
+        #work_message.work_delete(last_index)
+        #title, description = work_message.result_work("근무 삭제")
+        #await message.channel.send(embed=set_embed(title, test))
 
 #########################################################################
 
-client.run("NjIwMTM3NTY0ODQxNTc0NDIx.XYDeDA.sHhlPOC2tycUe1nxQ-nkjsPN8KQ")
+client.run("NjIwMTM3NTY0ODQxNTc0NDIx.XY7g2w.cKYz7nlHSwXlYu_81aBZVlFcsnk")
