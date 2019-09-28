@@ -32,6 +32,8 @@ def work_load(row):
     
 def work_all_load():
     
+    data = sheet.get_all_records()
+    
     index = []
     date = []
     writer = []
@@ -56,9 +58,12 @@ def work_all_load():
         
 def work_write(index, date, writer, time, content, row):
     sheet.insert_row([index, date, writer, time, content], row)
+    data = sheet.get_all_records()
     
 def work_delete(row):
-    sheet.delete_row(row)
+    int_row = int(row)
+    sheet.delete_row(int_row)
+    data = sheet.get_all_records()
     
 #index, date, writer, time, content = work_load(3)
 #print(date)
@@ -68,6 +73,7 @@ def last_index():
     data = sheet.get_all_records()
     for all_data in data:
         i = i + 1
+    #print(i)
     return i
 
 def result_work(result):
@@ -76,10 +82,16 @@ def result_work(result):
         description = "날짜,작성자,시간,내용 순으로 적어 주시길 바랍니다"
     elif result == "근무 추가":
         title = "단결! 근무를 추가하였습니다!!"
-        description = "==========테스트=========="
+        description = "==========추가 완료=========="
     elif result == "근무 보기":
         title = "단결! 현제 준비된 근무입니다!!"
-        description = "==========테스트=========="
+        description = "==========준비된 근무=========="
+    elif result == "근무 삭제":
+        title = "단결! 마지막 근무를 삭제하였습니다!!"
+        description = "==========삭제 완료=========="
+    elif result == "근무 삭제 실패":
+        title = "단결! 여기부터는 삭제불가입니다!!"
+        description = "==========삭제 실패=========="
     return title, description
 
 #index,date,writer,time,content = work_all_load()
