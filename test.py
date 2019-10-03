@@ -33,12 +33,18 @@ async def on_ready():
 @client.event
 async def on_message(message):    
     
+    #-----------------------------------------------------------------#
+    
     if message.author == client.user:
         return
     
+    #-----------------------------------------------------------------#
+    
     if message.content.startswith("/?"):
-        await message.channel.send(embed=set_embed("단결! 명령어를 불러드렸습니다!!", "/(오늘, 내일, 어제) 짬밥\n/(원하는 일자)일 짬밥\n/px"))
+        await message.channel.send(embed=set_embed("단결! 명령어를 불러드렸습니다!!", "/(오늘, 내일, 어제) 짬밥\n/(원하는 일자)일 짬밥\n/px\n/근무 추가\n/근무 보기\n/근무 삭제\n/검색 (원하는 검색어)\n/노래 (원하는 노래)"))
         
+    #-----------------------------------------------------------------#
+    
     search_day = ""
     
     last_text = message.content
@@ -51,14 +57,17 @@ async def on_message(message):
         await message.channel.send(embed=set_embed(title, description))
     
     if message.content.startswith("/오늘 짬밥"):
+        jjambab_message.reload_jjambab()
         title, description = jjambab_message.result_jjambab("오늘")
         await message.channel.send(embed=set_embed(title, description))
         
     if message.content.startswith("/내일 짬밥"):
+        jjambab_message.reload_jjambab()
         title, description = jjambab_message.result_jjambab("내일")
         await message.channel.send(embed=set_embed(title, description))
         
     if message.content.startswith("/어제 짬밥"):
+        jjambab_message.reload_jjambab()
         title, description = jjambab_message.result_jjambab("어제")
         await message.channel.send(embed=set_embed(title, description))
         
@@ -66,6 +75,8 @@ async def on_message(message):
         title = "단결! px이용시간 입니다!!"
         description = "==========평일==========\n10:30 ~ 11:50\n13:00 ~ 17:00 \n 18:00 ~ 19:30\n==========휴일==========\n14:00 ~ 17:30\n========================"
         await message.channel.send(embed=set_embed(title, description))
+    
+    #-----------------------------------------------------------------#
     
     index = ""
     date = ""
@@ -135,7 +146,51 @@ async def on_message(message):
         #work_message.work_delete(last_index)
         #title, description = work_message.result_work("근무 삭제")
         #await message.channel.send(embed=set_embed(title, test))
+        
+    #-----------------------------------------------------------------#
+    
+    if message.content == "/중지":
+        todaySeconds = date_message.reload_today()
+        title = "단결! 봇을 종료하겠습니다!!"
+        description = "==========0초뒤 중지=========="
+        await message.channel.send(embed=set_embed(title, description))
+        await client.logout()
+        
+    #-----------------------------------------------------------------#
+    
+    if message.content.startswith("/검색"):
+        last_text = message.content
+        result_text_0 = last_text.replace("/검색 ","")
+        result_text_1 = result_text_0.replace(" ","+")
+        if result_text_1 == "/검색":
+            title = "단결! 검색을 실패 하였습니다!!"
+            description = "==========검색 실패==========\n예제 /검색 꺼무위키 꺼라"  + "\n==========================="
+            await message.channel.send(embed=set_embed(title, description))
+        else:
+            google_site = "https://www.google.co.kr/search?q="
+            naver_site = "https://search.naver.com/search.naver?query="
+            youtube_site = "https://www.youtube.com/results?search_query="
+            title = "단결! 검색을 완료 하였습니다!!"
+            description = "==========검색 결과==========\n" + google_site + result_text_1 + "\n" + naver_site + result_text_1 + "\n==========================="
+            await message.channel.send(embed=set_embed(title, description))  
+            
+    #-----------------------------------------------------------------#
+    
+    if message.content.startswith("/노래"):
+        last_text = message.content
+        result_text_0 = last_text.replace("/노래 ","")
+        result_text_1 = result_text_0.replace(" ","+")
+        if result_text_1 == "/노래":
+            title = "단결! 노래 검색을 실패 하였습니다!!"
+            description = "==========검색 실패==========\n예제 /검색 꺼무위키 꺼라" + "\n==========================="
+            await message.channel.send(embed=set_embed(title, description))
+        else:
+            youtube_site = "https://www.youtube.com/results?search_query="
+            soundcloud_site = "https://soundcloud.com/search?q="
+            title = "단결! 노래 검색을 완료 하였습니다!!"
+            description = "==========검색 결과==========\n" + youtube_site + result_text_1 + "\n" + soundcloud_site + result_text_1 + "\n==========================="
+            await message.channel.send(embed=set_embed(title, description))
 
 #########################################################################
 
-client.run("NjIwMTM3NTY0ODQxNTc0NDIx.XY7g2w.cKYz7nlHSwXlYu_81aBZVlFcsnk")
+client.run("NjIwMTM3NTY0ODQxNTc0NDIx.XY8QLQ.YeghCRHncrRFLOeai7K9IltWpJ4")
