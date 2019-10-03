@@ -11,6 +11,7 @@ todayD = KR_sloct.strftime('%d')
 todayM = KR_sloct.strftime('%m')
 #todayDate = today.strftime('%Y-%m-%d')
 todayTime = KR_sloct.strftime('%H:%M:%S')
+todayTimeS = KR_sloct.strftime('%S')
 
 todays = KR_sloct.strftime('오늘은 %m월 %d일 입니다.')
 todayT = str(KR_sloct.year) + "년 " + str(KR_sloct.month) + "월 " + str(KR_sloct.day) + "일"
@@ -31,6 +32,7 @@ def reload_today():
     todayM = KR_sloct.strftime('%m')
     #todayDate = today.strftime('%Y-%m-%d')
     todayTime = KR_sloct.strftime('%H:%M:%S')
+    todayTimeS = KR_sloct.strftime('%S')
 
     todays = KR_sloct.strftime('오늘은 %m월 %d일 입니다.')
     todayT = str(KR_sloct.year) + "년 " + str(KR_sloct.month) + "월 " + str(KR_sloct.day) + "일"
@@ -42,7 +44,8 @@ def reload_today():
     yesterdays = yesterday.strftime('어제는 %m월 %d일 입니다.')
     yesterdayD = yesterday.strftime('%d')
     
-    print(KR_sloct)
+    #print(KR_sloct)
+    return KR_sloct
 
 #def exec_cron():
     #print("hi")
