@@ -13,7 +13,7 @@ scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/aut
 testSheets = ServiceAccountCredentials.from_json_keyfile_name("testSheets.json", scope)
 
 clients = gspread.authorize(testSheets)
-sheet = clients.open("2019-09 jjambab").sheet1
+sheet = clients.open("2019-10 jjambab").sheet1
     
 data = sheet.get_all_records()
 
@@ -38,7 +38,31 @@ for i in range(0, 32):
         yesterday_breakfast = sheet.cell(yesterdayD + 1,2).value
         yesterday_lunch = sheet.cell(yesterdayD + 1, 3).value
         yesterday_dinner = sheet.cell(yesterdayD + 1, 4).value
+        
+def reload_jjambab():
+    date_message.reload_today()
+    
+    todayD = int(date_message.todayD)
+    todayM = int(date_message.todayM)
+    tomorrowD = int(date_message.tomorrowD)
+    yesterdayD= int(date_message.yesterdayD)
+    
+    for i in range(0, 32):
 
+        if i == todayD:
+            today_breakfast = sheet.cell(todayD + 1,2).value
+            today_lunch = sheet.cell(todayD + 1, 3).value
+            today_dinner = sheet.cell(todayD + 1, 4).value
+
+        if i == tomorrowD:
+            tomorrow_breakfast = sheet.cell(tomorrowD + 1,2).value
+            tomorrow_lunch = sheet.cell(tomorrowD + 1, 3).value
+            tomorrow_dinner = sheet.cell(tomorrowD + 1, 4).value
+
+        if i == yesterdayD:
+            yesterday_breakfast = sheet.cell(yesterdayD + 1,2).value
+            yesterday_lunch = sheet.cell(yesterdayD + 1, 3).value
+            yesterday_dinner = sheet.cell(yesterdayD + 1, 4).value
                 
 def search_jjambab(result):
     date_message.reload_today()
