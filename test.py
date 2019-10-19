@@ -7,6 +7,8 @@ import sys
 import date_message
 import jjambab_message
 import work_message
+import calculator_message
+import scheduler_message
 #---------------------#
 
 client = discord.Client()
@@ -27,6 +29,7 @@ async def on_ready():
     print("===================")
     game = discord.Game("RPC봇 테스트")
     await client.change_presence(status=discord.Status.online, activity=game)
+    scheduler_message.start()
 
 #########################################################################
     
@@ -44,7 +47,7 @@ async def on_message(message):
         await message.channel.send(embed=set_embed("단결! 명령어를 불러드렸습니다!!", "/(오늘, 내일, 어제) 짬밥\n/(원하는 일자)일 짬밥\n/px\n/근무 추가\n/근무 보기\n/근무 삭제\n/검색 (원하는 검색어)\n/노래 (원하는 노래)"))
         
     #-----------------------------------------------------------------#
-    
+	
     search_day = ""
     
     last_text = message.content
@@ -149,11 +152,12 @@ async def on_message(message):
         
     #-----------------------------------------------------------------#
     
-    if message.content == "/중지":
+    if message.content == "/종료":
         todaySeconds = date_message.reload_today()
         title = "단결! 봇을 종료하겠습니다!!"
-        description = "==========0초뒤 중지=========="
+        description = "==========0초뒤 중료=========="
         await message.channel.send(embed=set_embed(title, description))
+        scheduler_message.stop()
         await client.logout()
         
     #-----------------------------------------------------------------#
@@ -190,7 +194,88 @@ async def on_message(message):
             title = "단결! 노래 검색을 완료 하였습니다!!"
             description = "==========검색 결과==========\n" + youtube_site + result_text_1 + "\n" + soundcloud_site + result_text_1 + "\n==========================="
             await message.channel.send(embed=set_embed(title, description))
+            
+    #-----------------------------------------------------------------#
+    
+    name = ""
+    date_0 = ""
+    date_1 = ""
+    result_date = ""
+    percent = ""
+    
+    if message.content == "/전역":
+        title, description = calculator_message.result_calculator("전역")
+        await message.channel.send(embed=set_embed(title, description))
+    
+    last_text = message.content
+    result_text = re.findall("\w+", last_text)
+    result_len = len(result_text)
+
+    if message.content.startswith("/전역 추가"):
+        if result_len == 9:
+            name = result_text[2]
+            date_0 = str(result_text[3]) + "." + str(result_text[4]) + "." + str(result_text[5])
+            date_1 = str(result_text[6]) + "." + str(result_text[7]) + "." + str(result_text[8])
+        else:
+            return
+        
+    if message.content == "/전역 추가 %s,%s,%s"%(name,date_0,date_1):
+        last_index = calculator_message.last_index()
+        result_date_0 = re.findall("\d", date_0)
+        search_date_0 = []
+        search_date_0.append(str(result_date_0[0]) + str(result_date_0[1]) + str(result_date_0[2]) + str(result_date_0[3]))
+        search_date_0.append(str(result_date_0[4]) + str(result_date_0[5]))
+        search_date_0.append(str(result_date_0[6]) + str(result_date_0[7]))
+        other_0 = date_message.other_date(int(search_date_0[0]),int(search_date_0[1]),int(search_date_0[2]))
+        result_date_1 = re.findall("\d", date_1)
+        search_date_1 = []
+        search_date_1.append(str(result_date_1[0]) + str(result_date_1[1]) + str(result_date_1[2]) + str(result_date_1[3]))
+        search_date_1.append(str(result_date_1[4]) + str(result_date_1[5]))
+        search_date_1.append(str(result_date_1[6]) + str(result_date_1[7]))
+        other_1 = date_message.other_date(int(search_date_1[0]),int(search_date_1[1]),int(search_date_1[2]))
+        #print(date_message.reduce_date(other_1,other_0))
+        #print(date_message.reduce_date(other_1,date_message.KR_sloct))
+        today = date_message.reload_other()
+        result_date = date_message.reduce_date(other_1,today)
+        print(result_date)
+        
+        #calculator_message.calculator_write(name,date_0,date_1,"","",last_index+1)
+        #title, description = calculator_message.result_calculator("전역 추가")
+        #await message.channel.send(embed=set_embed(title, description))
+        
+    test = ""
+    
+    if message.content == "/전역 보기":
+        last_index = calculator_message.last_index()
+        name,date_0,date_1,result_date,percent = calculator_message.calculator_all_load()
+        title, description = calculator_message.result_calculator("전역 보기")
+        test = "이름 | 입대일 | 전역일 | 일자 | 퍼센트"
+        test += "\n---------------------------------------------"
+        for i in range(0,last_index-1):
+            text = "\n" + name[i] + " | " + date_0[i] + " | " + date_1[i] + " | " + result_date[i] + " | " + percent[i]
+            test += text
+            test += "\n---------------------------------------------"
+        test += "\n"
+        #print(test)
+        await message.channel.send(embed=set_embed(title, test))
+    
+    if message.content == "/전역 삭제":
+        last_index = calculator_message.last_index()
+        if last_index <= 2:
+            title, description = calculator_message.result_calculator("전역 삭제 실패")
+            await message.channel.send(embed=set_embed(title, test))
+        else:
+            calculator_message.calculator_delete(last_index)
+            title, description = calculator_message.result_calculator("전역 삭제")
+            await message.channel.send(embed=set_embed(title, test))
+	#-----------------------------------------------------------------#
+    #if message.content == "/시작":
+        #await message.channel.send(embed=set_embed("시작","합니다"))
+        #scheduler_message.start()
+    if message.content == "/실험 중지":
+        await message.channel.send(embed=set_embed("중지","합니다"))
+        scheduler_message.stop()
 
 #########################################################################
 
-client.run("NjIwMTM3NTY0ODQxNTc0NDIx.XY8QLQ.YeghCRHncrRFLOeai7K9IltWpJ4")
+client.run("NjIwMTM3NTY0ODQxNTc0NDIx.XZXuWA.xc5NRbhzthqKDOAWyRqixd54krw")
