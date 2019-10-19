@@ -1,7 +1,6 @@
 #---------------------#
 import pytz
 import datetime
-from apscheduler.schedulers.blocking import BlockingScheduler
 #---------------------#
 
 KRT = pytz.timezone('Asia/Seoul')
@@ -9,9 +8,11 @@ KR_sloct = KRT.localize(datetime.datetime.now())
 
 todayD = KR_sloct.strftime('%d')
 todayM = KR_sloct.strftime('%m')
-#todayDate = today.strftime('%Y-%m-%d')
+todayDate = KR_sloct.strftime('%Y-%m-%d')
 todayTime = KR_sloct.strftime('%H:%M:%S')
 todayTimeS = KR_sloct.strftime('%S')
+todayTimeM = KR_sloct.strftime('%M')
+todayTimeH = KR_sloct.strftime('%H')
 
 todays = KR_sloct.strftime('오늘은 %m월 %d일 입니다.')
 todayT = str(KR_sloct.year) + "년 " + str(KR_sloct.month) + "월 " + str(KR_sloct.day) + "일"
@@ -26,13 +27,16 @@ yesterdayD = yesterday.strftime('%d')
 #"""
 def reload_today():
     KRT = pytz.timezone('Asia/Seoul')
-    KR_sloct = KRT.localize(datetime.datetime.now())
-
+    KR = KRT.localize(datetime.datetime.now())
+    KR_sloct = KR + datetime.timedelta(hours=9)
+	
     todayD = KR_sloct.strftime('%d')
     todayM = KR_sloct.strftime('%m')
-    #todayDate = today.strftime('%Y-%m-%d')
+    todayDate = KR_sloct.strftime('%Y-%m-%d')
     todayTime = KR_sloct.strftime('%H:%M:%S')
     todayTimeS = KR_sloct.strftime('%S')
+    todayTimeM = KR_sloct.strftime('%M')
+    todayTimeH = KR_sloct.strftime('%H')
 
     todays = KR_sloct.strftime('오늘은 %m월 %d일 입니다.')
     todayT = str(KR_sloct.year) + "년 " + str(KR_sloct.month) + "월 " + str(KR_sloct.day) + "일"
@@ -44,14 +48,18 @@ def reload_today():
     yesterdays = yesterday.strftime('어제는 %m월 %d일 입니다.')
     yesterdayD = yesterday.strftime('%d')
     
-    #print(KR_sloct)
     return KR_sloct
 
-#def exec_cron():
-    #print("hi")
-    
-#sched = BlockingScheduler()
-#sched.add_job(exec_interval, 'interval', seconds=10)
-#sched.add_job(exec_cron, 'cron', minute='*/1', second='10, 30')
-#sched.start()
-#"""
+def reload_other():
+    KRT = pytz.timezone('Asia/Seoul')
+    sloct = KRT.localize(datetime.datetime.now())
+    return sloct
+
+def other_date(year,month,date):
+    KRT = pytz.timezone('Asia/Seoul')
+    other = KRT.localize(datetime.datetime(year, month, date))
+    return other
+
+def reduce_date(original, reduce):
+    result = original - reduce
+    return result
