@@ -29,18 +29,16 @@ async def on_ready():
     print("===================")
     game = discord.Game("RPC봇 테스트")
     await client.change_presence(status=discord.Status.online, activity=game)
-    scheduler_message.start()
+    scheduler_message.sched_start()
 
 #########################################################################
     
 @client.event
-async def on_message(message):    
-    
+async def on_message(message):
+
     #-----------------------------------------------------------------#
-    
     if message.author == client.user:
         return
-    
     #-----------------------------------------------------------------#
     
     if message.content.startswith("/?"):
@@ -157,7 +155,8 @@ async def on_message(message):
         title = "단결! 봇을 종료하겠습니다!!"
         description = "==========0초뒤 중료=========="
         await message.channel.send(embed=set_embed(title, description))
-        scheduler_message.stop()
+        scheduler_message.sched_stop()
+        scheduler_message.sched_shutdown()
         await client.logout()
         
     #-----------------------------------------------------------------#
@@ -269,13 +268,21 @@ async def on_message(message):
             title, description = calculator_message.result_calculator("전역 삭제")
             await message.channel.send(embed=set_embed(title, test))
 	#-----------------------------------------------------------------#
-    #if message.content == "/시작":
+	
+    #if message.content == "/자동 시작":
         #await message.channel.send(embed=set_embed("시작","합니다"))
-        #scheduler_message.start()
-    if message.content == "/실험 중지":
-        await message.channel.send(embed=set_embed("중지","합니다"))
-        scheduler_message.stop()
+        #scheduler_message.sched_start()
+    	
+    if message.content == "/실험":
+        test = ""
+        test += date_message.yesterdayD + "어제 /"
+        test += date_message.todayD + "오늘 /"
+        test += date_message.tomorrowD + "내일 /"
+        test += date_message.todayTimeH + "/"
+        test += date_message.todayTimeM + "/"
+        test += date_message.todayTimeS
+        await message.channel.send(embed=set_embed("실험",test))
 
 #########################################################################
 
-client.run("NjIwMTM3NTY0ODQxNTc0NDIx.XZXuWA.xc5NRbhzthqKDOAWyRqixd54krw")
+client.run("NjIwMTM3NTY0ODQxNTc0NDIx.XbPCVw.hNzdAV8jBpURhddFYLLP6bhSeWI")
