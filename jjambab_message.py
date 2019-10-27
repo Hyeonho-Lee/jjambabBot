@@ -66,6 +66,7 @@ def reload_jjambab():
                 
 def search_jjambab(result):
     date_message.reload_today()
+    reload_jjambab()
     search = int(result)
     search_breakfast = sheet.cell(search + 1,2).value
     search_lunch = sheet.cell(search + 1, 3).value
@@ -76,6 +77,7 @@ def search_jjambab(result):
 
 def result_jjambab(result):
     date_message.reload_today()
+    reload_jjambab()
     if result == "오늘":
         title = "단결! " + str(date_message.todayM) + "월" + str(date_message.todayD) + "일" + " 짬밥입니다!!\n"
         description = "==========아침==========\n" + today_breakfast + "\n==========점심==========\n" + today_lunch + "\n==========저녁==========\n" + today_dinner + "\n========================"
@@ -85,5 +87,14 @@ def result_jjambab(result):
     elif result == "어제":
         title = "단결! " + str(date_message.todayM) + "월" + str(date_message.yesterdayD) + "일" + " 짬밥입니다!!\n"
         description = "==========아침==========\n" + yesterday_breakfast + "\n==========점심==========\n" + yesterday_lunch + "\n==========저녁==========\n" + yesterday_dinner + "\n========================"
+    elif result == "아침":
+        title = "단결! 오늘의 아침밥을 불러드렸습니다!"
+        description = "==========아침==========\n" + today_breakfast + "\n========================"
+    elif result == "점심":
+        title = "단결! 오늘의 점심밥을 불러드렸습니다!"
+        description = "==========점심==========\n" + today_lunch + "\n========================"
+    elif result == "저녁":
+        title = "단결! 오늘의 저녁밥을 불러드렸습니다!"
+        description = "==========저녁==========\n" + today_dinner + "\n========================"
     return title, description
 
