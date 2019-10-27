@@ -44,7 +44,7 @@ async def on_ready():
                 is_true = 1
                 await channel.send(embed=set_embed("밥시간 알림", "점심 30분전 입니다"))
                 is_true = 0
-            if int(date_message.todayTimeH) == 18 and int(date_message.todayTimeM) == 42 and int(date_message.todayTimeS) == 5 and is_true == 0:
+            if int(date_message.todayTimeH) == 12 and int(date_message.todayTimeM) == 30 and int(date_message.todayTimeS) == 5 and is_true == 0:
                 is_true = 1
                 jjambab_message.reload_jjambab()
                 title, description = jjambab_message.result_jjambab("점심")
@@ -54,11 +54,19 @@ async def on_ready():
                 is_true = 1
                 await channel.send(embed=set_embed("밥시간 알림", "저녁 30분전 입니다"))
                 is_true = 0
-            if int(date_message.todayTimeH) == 18 and int(date_message.todayTimeM) == 43 and int(date_message.todayTimeS) == 5 and is_true == 0:
+            if int(date_message.todayTimeH) == 17 and int(date_message.todayTimeM) == 30 and int(date_message.todayTimeS) == 5 and is_true == 0:
                 is_true = 1
                 jjambab_message.reload_jjambab()
                 title, description = jjambab_message.result_jjambab("저녁")
                 await channel.send(embed=set_embed(title, description))
+                is_true = 0
+            if int(date_message.todayTimeH) == 20 and int(date_message.todayTimeM) == 0 and int(date_message.todayTimeS) == 5 and is_true == 0:
+                is_true = 1
+                await channel.send(embed=set_embed("청소시간 알림", " 개인임무분담제에 의한 청소 30분전 입니다"))
+                is_true = 0
+            if int(date_message.todayTimeH) == 20 and int(date_message.todayTimeM) == 30 and int(date_message.todayTimeS) == 5 and is_true == 0:
+                is_true = 1
+                await channel.send(embed=set_embed("청소시간 알림", " 개인임무분담제에 의한 청소를 해야합니다"))
                 is_true = 0
         except:
             is_true = 0
