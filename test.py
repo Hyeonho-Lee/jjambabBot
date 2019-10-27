@@ -115,9 +115,9 @@ async def on_message(message):
         await message.channel.send(embed=set_embed(title, description))
         
     if message.content.startswith("/px"):
-        title = "단결! px이용시간 입니다!!"
+        title = "\n단결! px이용시간 입니다!!\n"
         description = "==========평일==========\n10:30 ~ 11:50\n13:00 ~ 17:00 \n 18:00 ~ 19:30\n==========휴일==========\n14:00 ~ 17:30\n========================"
-        await message.channel.send(embed=set_embed(title, description))
+        await message.channel.send("/tts " + title + description)
     
     #-----------------------------------------------------------------#
     
@@ -345,4 +345,4 @@ async def on_message(message):
 
 #########################################################################
 
-client.run("NjIwMTM3NTY0ODQxNTc0NDIx.XbVgAA.txjw9EKm2EzA3LXsTmXS6l0UdTE")
+client.run("NjIwMTM3NTY0ODQxNTc0NDIx.XbVsjg.daIAfKd2-OfRWQApYEkNpfJe_1Q")
