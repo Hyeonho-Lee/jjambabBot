@@ -273,15 +273,17 @@ async def on_message(message):
         #await message.channel.send(embed=set_embed("시작","합니다"))
         #scheduler_message.sched_start()
     	
-    if message.content == "/실험":
+    if message.content == "/시간":
         test = ""
+	test += date_message.todayY + "년 /"
+	test += date_message.todayM + "월 /"
+	test += date_message.todayD + "오늘 /"
         test += date_message.yesterdayD + "어제 /"
-        test += date_message.todayD + "오늘 /"
         test += date_message.tomorrowD + "내일 /"
-        test += date_message.todayTimeH + "/"
-        test += date_message.todayTimeM + "/"
+        test += date_message.todayTimeH + ":"
+        test += date_message.todayTimeM + ":"
         test += date_message.todayTimeS
-        await message.channel.send(embed=set_embed("실험",test))
+        await message.channel.send(embed=set_embed("시간",test))
 
 #########################################################################
 
