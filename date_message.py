@@ -8,7 +8,7 @@ KR_sloct = KRT.localize(datetime.datetime.now())
 
 todayD = KR_sloct.strftime('%d')
 todayM = KR_sloct.strftime('%m')
-todayY = KR_sloct.strftime('%y')
+todayY = KR_sloct.strftime('%Y')
 todayDate = KR_sloct.strftime('%Y-%m-%d')
 todayTime = KR_sloct.strftime('%H:%M:%S')
 todayTimeS = KR_sloct.strftime('%S')
@@ -33,7 +33,7 @@ def reload_today():
 	
     todayD = KR_sloct.strftime('%d')
     todayM = KR_sloct.strftime('%m')
-    todayY = KR_sloct.strftime('%y')
+    todayY = KR_sloct.strftime('%Y')
     todayDate = KR_sloct.strftime('%Y-%m-%d')
     todayTime = KR_sloct.strftime('%H:%M:%S')
     todayTimeS = KR_sloct.strftime('%S')
