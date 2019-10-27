@@ -185,13 +185,29 @@ async def on_message(message):
         result_text_1 = result_text_0.replace(" ","+")
         if result_text_1 == "/노래":
             title = "단결! 노래 검색을 실패 하였습니다!!"
-            description = "==========검색 실패==========\n예제 /검색 꺼무위키 꺼라" + "\n==========================="
+            description = "==========검색 실패==========\n예제 /노래 볼빨간사춘기 워커홀릭" + "\n==========================="
             await message.channel.send(embed=set_embed(title, description))
         else:
             youtube_site = "https://www.youtube.com/results?search_query="
             soundcloud_site = "https://soundcloud.com/search?q="
             title = "단결! 노래 검색을 완료 하였습니다!!"
             description = "==========검색 결과==========\n" + youtube_site + result_text_1 + "\n" + soundcloud_site + result_text_1 + "\n==========================="
+            await message.channel.send(embed=set_embed(title, description))
+            
+    #-----------------------------------------------------------------#
+    
+    if message.content.startswith("/롤"):
+        last_text = message.content
+        result_text_0 = last_text.replace("/롤 ","")
+        result_text_1 = result_text_0.replace(" ","+")
+        if result_text_1 == "/롤":
+            title = "단결! 노래 검색을 실패 하였습니다!!"
+            description = "==========검색 실패==========\n예제 /롤 명돌이0" + "\n==========================="
+            await message.channel.send(embed=set_embed(title, description))
+        else:
+            opgg_site = "https://www.op.gg/summoner/userName="
+            title = "단결! 롤 전적 검색을 완료 하였습니다!!"
+            description = "==========검색 결과==========\n" + opgg_site + result_text_1 + "\n==========================="
             await message.channel.send(embed=set_embed(title, description))
             
     #-----------------------------------------------------------------#
