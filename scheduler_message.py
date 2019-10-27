@@ -27,6 +27,8 @@ def exec_cron():
 	date_message.todayTimeS = now.strftime('%S')
 	date_message.todayD = now.strftime('%d')
 	date_message.todayM = now.strftime('%m')
+	date_message.todayY = now.strftime('%y')
+	date_message.todayT = date_message.todayY + "년 " + date_message.todayM + "월 " + date_message.todayD + "일"
 	tomorrow = now + datetime.timedelta(days=1)
 	date_message.tomorrowD = tomorrow.strftime('%d')
 	yesterday = now - datetime.timedelta(days=1)
