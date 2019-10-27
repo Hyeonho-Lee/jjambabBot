@@ -27,9 +27,42 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print("===================")
-    game = discord.Game("RPC봇 테스트")
+    game = discord.Game("R.PC Bot Online")
     await client.change_presence(status=discord.Status.online, activity=game)
     scheduler_message.sched_start()
+    channel = client.get_channel(622749469313728553)
+    is_true = 0
+    while True:
+        try:
+            if int(date_message.todayTimeH) == 7 and int(date_message.todayTimeM) == 0 and int(date_message.todayTimeS) == 0 and is_true == 0:
+                is_true = 1
+                jjambab_message.reload_jjambab()
+                title, description = jjambab_message.result_jjambab("아침")
+                await channel.send(embed=set_embed(title, description))
+                is_true = 0
+            if int(date_message.todayTimeH) == 12 and int(date_message.todayTimeM) == 0 and int(date_message.todayTimeS) == 0 and is_true == 0:
+                is_true = 1
+                await channel.send(embed=set_embed("밥시간 알림", "점심 30분전 입니다"))
+                is_true = 0
+            if int(date_message.todayTimeH) == 12 and int(date_message.todayTimeM) == 40 and int(date_message.todayTimeS) == 0 and is_true == 0:
+                is_true = 1
+                jjambab_message.reload_jjambab()
+                title, description = jjambab_message.result_jjambab("점심")
+                await channel.send(embed=set_embed(title, description))
+                is_true = 0
+            if int(date_message.todayTimeH) == 17 and int(date_message.todayTimeM) == 0 and int(date_message.todayTimeS) == 0 and is_true == 0:
+                is_true = 1
+                await channel.send(embed=set_embed("밥시간 알림", "저녁 30분전 입니다"))
+                is_true = 0
+            if int(date_message.todayTimeH) == 17 and int(date_message.todayTimeM) == 30 and int(date_message.todayTimeS) == 0 and is_true == 0:
+                is_true = 1
+                jjambab_message.reload_jjambab()
+                title, description = jjambab_message.result_jjambab("저녁")
+                await channel.send(embed=set_embed(title, description))
+                is_true = 0
+        except:
+            is_true = 0
+        await asyncio.sleep(1)
 
 #########################################################################
     
@@ -201,7 +234,7 @@ async def on_message(message):
         result_text_0 = last_text.replace("/롤 ","")
         result_text_1 = result_text_0.replace(" ","+")
         if result_text_1 == "/롤":
-            title = "단결! 노래 검색을 실패 하였습니다!!"
+            title = "단결! 롤 전적 검색을 실패 하였습니다!!"
             description = "==========검색 실패==========\n예제 /롤 명돌이0" + "\n==========================="
             await message.channel.send(embed=set_embed(title, description))
         else:
@@ -291,10 +324,10 @@ async def on_message(message):
     	
     if message.content == "/시간":
         test = ""
-	test += date_message.todayY + "년 /"
-	test += date_message.todayM + "월 /"
-	test += date_message.todayD + "오늘 /"
+        test += date_message.todayY + "년 /"
+        test += date_message.todayM + "월 /"
         test += date_message.yesterdayD + "어제 /"
+        test += date_message.todayD + "오늘 /"
         test += date_message.tomorrowD + "내일 /"
         test += date_message.todayTimeH + ":"
         test += date_message.todayTimeM + ":"
@@ -303,4 +336,4 @@ async def on_message(message):
 
 #########################################################################
 
-client.run("NjIwMTM3NTY0ODQxNTc0NDIx.XbPCVw.hNzdAV8jBpURhddFYLLP6bhSeWI")
+client.run("NjIwMTM3NTY0ODQxNTc0NDIx.XbUTWQ.f31fJuwMsfcipEyaas1tgKy2ikA")
