@@ -33,7 +33,7 @@ def exec_cron():
 	date_message.tomorrowD = tomorrow.strftime('%d')
 	yesterday = now - datetime.timedelta(days=1)
 	date_message.yesterdayD = yesterday.strftime('%d')
-	auto_check()
+	#auto_check()
 
 def testss():
 	print(date_message.todayTimeH,date_message.todayTimeM,date_message.todayTimeS)
@@ -49,11 +49,11 @@ def calendar(hour,minute,second,text):
     if int(date_message.todayTimeH) == hour and int(date_message.todayTimeM) == minute and int(date_message.todayTimeS) == second:
         print(text)
 
-def auto_check():
-    calendar(7,30,0,"아침 먹을시간임")
-    calendar(12,30,0,"점심 먹을시간임")
-    calendar(17,30,0,"저녘 먹을시간임")
-    calendar(20,25,0,"청소할 시간 5분전임")
+#def auto_check():
+    #calendar(7,30,0,"아침 먹을시간임")
+    #calendar(12,30,0,"점심 먹을시간임")
+    #calendar(17,30,0,"저녘 먹을시간임")
+    #calendar(20,25,0,"청소할 시간 5분전임")
 
 def sched_start():
 	scheduler("exec_cron","1")
