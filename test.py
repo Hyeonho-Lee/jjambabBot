@@ -275,7 +275,7 @@ async def on_message(message):
     	
     if message.content == "/시간":
         test = ""
-	test += date_message.todayY + "년 /"
+	test += "20" + date_message.todayY + "년 /"
 	test += date_message.todayM + "월 /"
 	test += date_message.todayD + "오늘 /"
         test += date_message.yesterdayD + "어제 /"
