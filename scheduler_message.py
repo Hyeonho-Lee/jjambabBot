@@ -38,11 +38,14 @@ def exec_cron():
 def testss():
 	print(date_message.todayTimeH,date_message.todayTimeM,date_message.todayTimeS)
 	
+def reload_datas():
+    jjambab_message.reload_data()
+	
 def scheduler(type,job_id):
 	if type == "exec_cron":
 		sched.add_job(exec_cron,'cron',minute='*/1',second='*/1',id=job_id)
-	if type == "testss":
-		sched.add_job(testss,'cron',minute='*/1',second='*/1',id=job_id)
+	if type == "reload_data":
+		sched.add_job(reload_datas,'cron',hour='*/1',id=job_id)
 
 #---------------------------------------------------------------#	
 def calendar(hour,minute,second,text):
@@ -57,10 +60,10 @@ def calendar(hour,minute,second,text):
 
 def sched_start():
 	scheduler("exec_cron","1")
-	#scheduler("testss","2")
+	scheduler("reload_data","2")
 
 def sched_stop():
 	kill_scheduler("1")
-	#kill_scheduler("2")
+	kill_scheduler("2")
 
 sched.start()
