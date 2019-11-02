@@ -13,7 +13,7 @@ scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/aut
 testSheets = ServiceAccountCredentials.from_json_keyfile_name("testSheets.json", scope)
 
 clients = gspread.authorize(testSheets)
-sheet = clients.open("2019-10 jjambab").sheet1
+sheet = clients.open("2019-11 jjambab").sheet1
     
 data = sheet.get_all_records()
 
@@ -33,7 +33,18 @@ for i in range(0, 32):
         yesterday_breakfast = sheet.cell(int(date_message.yesterdayD) + 1,2).value
         yesterday_lunch = sheet.cell(int(date_message.yesterdayD) + 1, 3).value
         yesterday_dinner = sheet.cell(int(date_message.yesterdayD) + 1, 4).value
-        
+
+def reload_data():
+    scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
+
+    testSheets = ServiceAccountCredentials.from_json_keyfile_name("testSheets.json", scope)
+
+    clients = gspread.authorize(testSheets)
+    sheet = clients.open("2019-11 jjambab").sheet1
+    
+    data = sheet.get_all_records()
+
+
 def reload_jjambab():
     
     date_message.reload_today()
