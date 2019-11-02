@@ -363,4 +363,4 @@ async def on_message(message):
 
 #########################################################################
 
-client.run("NjIwMTM3NTY0ODQxNTc0NDIx.Xbz9AA.OwOw84Qz2tNu3vVb3aObDBGXAYw")
+client.run("NjIwMTM3NTY0ODQxNTc0NDIx.Xb0ipw.rLzRh6A90AueSFyD8jRH7v1sohY")
