@@ -41,10 +41,10 @@ async def on_ready():
                 last_index = calculator_message.last_index()
                 name,date_0,date_1,result_date,percent = calculator_message.calculator_all_load()
                 title, description = calculator_message.result_calculator("전역 보기")
-                test = "이름 | 입대일 | 전역일 | 일자 | 퍼센트"
+                test = "이름 | 전역일 | 입대일 | 일자 | 퍼센트"
                 test += "\n-----------------------------------------------------------"
                 for i in range(0,last_index-1):
-                    text = "\n" + name[i] + " | " + date_0[i] + " | " + date_1[i] + " | " + result_date[i] + " | " + percent[i]
+                    text = "\n" + name[i] + " | " + date_1[i] + " | " + date_0[i] + " | " + result_date[i] + " | " + percent[i]
                     test += text
                     test += "\n-----------------------------------------------------------"
                 test += "\n"
@@ -324,10 +324,10 @@ async def on_message(message):
         last_index = calculator_message.last_index()
         name,date_0,date_1,result_date,percent = calculator_message.calculator_all_load()
         title, description = calculator_message.result_calculator("전역 보기")
-        test = "이름 | 입대일 | 전역일 | 일자 | 퍼센트"
+        test = "이름 | 전역일 | 입대일 | 일자 | 퍼센트"
         test += "\n---------------------------------------------------------------------------"
         for i in range(0,last_index-1):
-            text = "\n" + name[i] + " | " + date_0[i] + " | " + date_1[i] + " | " + result_date[i] + " | " + percent[i]
+            text = "\n" + name[i] + " | " + date_1[i] + " | " + date_0[i] + " | " + result_date[i] + " | " + percent[i]
             test += text
             test += "\n---------------------------------------------------------------------------"
         test += "\n"
