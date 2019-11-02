@@ -44,8 +44,17 @@ def calculator_all_load():
         name.append(load_text[1])
         date_0.append(str(load_text[3]) + "." + str(load_text[4]) + "." + str(load_text[5]))
         date_1.append(str(load_text[7]) + "." + str(load_text[8]) + "." + str(load_text[9]))
-        result_date.append(load_text[11])
-        percent.append(load_text[13])
+        
+        other_0 = date_message.other_date(int(load_text[3]),int(load_text[4]),int(load_text[5]))
+        other_1 = date_message.other_date(int(load_text[7]),int(load_text[8]),int(load_text[9]))
+        other_2 = date_message.other_date(int(date_message.todayY),int(date_message.todayM),int(date_message.todayD))
+        all_day = date_message.reduce_date(other_1,other_0)
+        reduce_day = date_message.reduce_date(other_1,other_2)
+        result_day = ((all_day - reduce_day) / all_day) * 100
+        percent_day = str(round(result_day,2)) + "%"
+
+        result_date.append(str(reduce_day))
+        percent.append(str(percent_day))
         
     return name,date_0,date_1,result_date,percent
         
@@ -56,6 +65,10 @@ def calculator_write(name, date_0, date_1, result_date, percent, row):
 def calculator_delete(row):
     int_row = int(row)
     sheet.delete_row(int_row)
+    data = sheet.get_all_records()
+	
+def calculator_update(name, date_0, date_1, result_date, percent, row):
+    sheet.update_row([name, date_0, date_1, result_date, percent], row)
     data = sheet.get_all_records()
 
 def last_index():
@@ -73,7 +86,7 @@ def result_calculator(result):
         title = "단결! 전역을 추가하였습니다!!"
         description = "==========추가 완료=========="
     elif result == "전역 보기":
-        title = "단결! 현제 준비된 근무입니다!!"
+        title = "단결! 현제 남은 복무일수 입니다!!"
         description = "==========준비된 근무=========="
     elif result == "전역 삭제":
         title = "단결! 마지막 근무를 삭제하였습니다!!"
