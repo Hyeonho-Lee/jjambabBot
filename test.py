@@ -31,9 +31,26 @@ async def on_ready():
     await client.change_presence(status=discord.Status.online, activity=game)
     scheduler_message.sched_start()
     channel = client.get_channel(622749469313728553)
+	#364719246820769792 배그서버
+	#622749469313728553 5생실험실
     is_true = 0
     while True:
         try:
+            if int(date_message.todayTimeH) == 6 and int(date_message.todayTimeM) == 30 and int(date_message.todayTimeS) == 5 and is_true == 0:
+                is_true = 1
+                last_index = calculator_message.last_index()
+                name,date_0,date_1,result_date,percent = calculator_message.calculator_all_load()
+                title, description = calculator_message.result_calculator("전역 보기")
+                test = "이름 | 입대일 | 전역일 | 일자 | 퍼센트"
+                test += "\n-----------------------------------------------------------"
+                for i in range(0,last_index-1):
+                    text = "\n" + name[i] + " | " + date_0[i] + " | " + date_1[i] + " | " + result_date[i] + " | " + percent[i]
+                    test += text
+                    test += "\n-----------------------------------------------------------"
+                test += "\n"
+                #print(test)
+                await channel.send(embed=set_embed(title, test))
+                is_true = 0
             if int(date_message.todayTimeH) == 7 and int(date_message.todayTimeM) == 0 and int(date_message.todayTimeS) == 5 and is_true == 0:
                 is_true = 1
                 jjambab_message.reload_jjambab()
@@ -44,7 +61,7 @@ async def on_ready():
                 is_true = 1
                 await channel.send(embed=set_embed("밥시간 알림", "점심 30분전 입니다"))
                 is_true = 0
-            if int(date_message.todayTimeH) == 12 and int(date_message.todayTimeM) == 30 and int(date_message.todayTimeS) == 5 and is_true == 0:
+            if int(date_message.todayTimeH) == 12 and int(date_message.todayTimeM) == 30 and int(date_message.todayTimeS) == 35 and is_true == 0:
                 is_true = 1
                 jjambab_message.reload_jjambab()
                 title, description = jjambab_message.result_jjambab("점심")
@@ -54,7 +71,7 @@ async def on_ready():
                 is_true = 1
                 await channel.send(embed=set_embed("밥시간 알림", "저녁 30분전 입니다"))
                 is_true = 0
-            if int(date_message.todayTimeH) == 17 and int(date_message.todayTimeM) == 30 and int(date_message.todayTimeS) == 5 and is_true == 0:
+            if int(date_message.todayTimeH) == 17 and int(date_message.todayTimeM) == 30 and int(date_message.todayTimeS) == 35 and is_true == 0:
                 is_true = 1
                 jjambab_message.reload_jjambab()
                 title, description = jjambab_message.result_jjambab("저녁")
@@ -70,7 +87,7 @@ async def on_ready():
                 is_true = 0
         except:
             is_true = 0
-        await asyncio.sleep(0.5)
+        await asyncio.sleep(1)
 
 #########################################################################
     
@@ -290,15 +307,16 @@ async def on_message(message):
         search_date_1.append(str(result_date_1[4]) + str(result_date_1[5]))
         search_date_1.append(str(result_date_1[6]) + str(result_date_1[7]))
         other_1 = date_message.other_date(int(search_date_1[0]),int(search_date_1[1]),int(search_date_1[2]))
-        #print(date_message.reduce_date(other_1,other_0))
-        #print(date_message.reduce_date(other_1,date_message.KR_sloct))
-        today = date_message.reload_other()
-        result_date = date_message.reduce_date(other_1,today)
-        print(result_date)
-        
-        #calculator_message.calculator_write(name,date_0,date_1,"","",last_index+1)
-        #title, description = calculator_message.result_calculator("전역 추가")
-        #await message.channel.send(embed=set_embed(title, description))
+
+        other_2 = date_message.other_date(int(date_message.todayY),int(date_message.todayM),int(date_message.todayD))
+        all_day = date_message.reduce_date(other_1,other_0)
+        reduce_day = date_message.reduce_date(other_1,other_2)
+        result_day = ((all_day - reduce_day) / all_day) * 100
+        percent_day = str(round(result_day,2)) + "%"
+        #print(percent_day)
+        calculator_message.calculator_write(name,date_0,date_1,"","",last_index+1)
+        title, description = calculator_message.result_calculator("전역 추가")
+        await message.channel.send(embed=set_embed(title, description))
         
     test = ""
     
@@ -307,11 +325,11 @@ async def on_message(message):
         name,date_0,date_1,result_date,percent = calculator_message.calculator_all_load()
         title, description = calculator_message.result_calculator("전역 보기")
         test = "이름 | 입대일 | 전역일 | 일자 | 퍼센트"
-        test += "\n---------------------------------------------"
+        test += "\n---------------------------------------------------------------------------"
         for i in range(0,last_index-1):
             text = "\n" + name[i] + " | " + date_0[i] + " | " + date_1[i] + " | " + result_date[i] + " | " + percent[i]
             test += text
-            test += "\n---------------------------------------------"
+            test += "\n---------------------------------------------------------------------------"
         test += "\n"
         #print(test)
         await message.channel.send(embed=set_embed(title, test))
@@ -345,4 +363,4 @@ async def on_message(message):
 
 #########################################################################
 
-client.run("NjIwMTM3NTY0ODQxNTc0NDIx.XbVsjg.daIAfKd2-OfRWQApYEkNpfJe_1Q")
+client.run("NjIwMTM3NTY0ODQxNTc0NDIx.Xbz9AA.OwOw84Qz2tNu3vVb3aObDBGXAYw")
