@@ -25,10 +25,9 @@ def work_load(row):
     date = sheet.cell(row, 2).value
     writer = sheet.cell(row, 3).value
     time = sheet.cell(row, 4).value
-    content = sheet.cell(row, 5).value
     #for value in result:
     #    print(value)
-    return index,date,writer,time,content
+    return index,date,writer,time
     
 def work_all_load():
     
@@ -38,7 +37,6 @@ def work_all_load():
     date = []
     writer = []
     time = []
-    content = []
     
     for all_data in data:
         test = str(all_data)
@@ -48,16 +46,15 @@ def work_all_load():
         date.append(load_text[3])
         writer.append(load_text[5])
         time.append(load_text[7])
-        content.append(load_text[9])
         
-    return index,date,writer,time,content
+    return index,date,writer,time
     
     #for all_data in data:
         #print('-'.join(all_data))
         #print("====================")
         
-def work_write(index, date, writer, time, content, row):
-    sheet.insert_row([index, date, writer, time, content], row)
+def work_write(index, date, writer, time, row):
+    sheet.insert_row([index, date, writer, time], row)
     data = sheet.get_all_records()
     
 def work_delete(row):
