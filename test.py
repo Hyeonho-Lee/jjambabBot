@@ -34,17 +34,12 @@ async def on_ready():
 	#364719246820769792 배그서버
 	#622749469313728553 5생실험실
     is_true = 0
-    date = ""
-    breakfast = ""
-    lunch = ""
-    dinner = ""
-    search_day = ""
     while True:
         try:
             if int(date_message.todayTimeH) == 7 and int(date_message.todayTimeM) == 0 and int(date_message.todayTimeS) == 5 and is_true == 0:
                 is_true = 1
                 last_index = jjambab_message.last_index()
-                date,breakfast,lunch,dinner = jjambab_message.test_reload()
+                breakfast,lunch,dinner = jjambab_message.test_reload()
                 title, description = jjambab_message.result_jjambab("아침")
                 test = ""
                 for i in range(1,last_index):
@@ -62,7 +57,7 @@ async def on_ready():
             if int(date_message.todayTimeH) == 12 and int(date_message.todayTimeM) == 0 and int(date_message.todayTimeS) == 35 and is_true == 0:
                 is_true = 1
                 last_index = jjambab_message.last_index()
-                date,breakfast,lunch,dinner = jjambab_message.test_reload()
+                breakfast,lunch,dinner = jjambab_message.test_reload()
                 title, description = jjambab_message.result_jjambab("점심")
                 test = ""
                 for i in range(1,last_index):
@@ -80,7 +75,7 @@ async def on_ready():
             if int(date_message.todayTimeH) == 17 and int(date_message.todayTimeM) == 30 and int(date_message.todayTimeS) == 35 and is_true == 0:
                 is_true = 1
                 last_index = jjambab_message.last_index()
-                date,breakfast,lunch,dinner = jjambab_message.test_reload()
+                breakfast,lunch,dinner = jjambab_message.test_reload()
                 title, description = jjambab_message.result_jjambab("저녁")
                 test = ""
                 for i in range(1,last_index):
@@ -144,7 +139,7 @@ async def on_message(message):
     
     if message.content.startswith("/오늘 짬밥"):
         last_index = jjambab_message.last_index()
-        date,breakfast,lunch,dinner = jjambab_message.test_reload()
+        breakfast,lunch,dinner = jjambab_message.test_reload()
         title, description = jjambab_message.result_jjambab("오늘")
         test = ""
         for i in range(1,last_index):
@@ -157,7 +152,7 @@ async def on_message(message):
         
     if message.content.startswith("/내일 짬밥"):
         last_index = jjambab_message.last_index()
-        date,breakfast,lunch,dinner = jjambab_message.test_reload()
+        breakfast,lunch,dinner = jjambab_message.test_reload()
         title, description = jjambab_message.result_jjambab("내일")
         test = ""
         for i in range(1,last_index):
@@ -170,7 +165,7 @@ async def on_message(message):
         
     if message.content.startswith("/어제 짬밥"):
         last_index = jjambab_message.last_index()
-        date,breakfast,lunch,dinner = jjambab_message.test_reload()
+        breakfast,lunch,dinner = jjambab_message.test_reload()
         title, description = jjambab_message.result_jjambab("어제")
         test = ""
         for i in range(1,last_index):
