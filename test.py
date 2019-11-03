@@ -126,7 +126,7 @@ async def on_message(message):
         
     if message.content == "/%s일 짬밥"%search_day:
         last_index = jjambab_message.last_index()
-        date,breakfast,lunch,dinner = jjambab_message.test_reload()
+        breakfast,lunch,dinner = jjambab_message.test_reload()
         title, description = jjambab_message.search_jjambab(search_day)
         test = ""
         for i in range(1,last_index):
@@ -405,4 +405,4 @@ async def on_message(message):
 
 #########################################################################
 
-client.run("NjIwMTM3NTY0ODQxNTc0NDIx.Xb6Gkg.mi6GZyd358Ft3fywJOjdVxv3zqc")
+client.run("NjIwMTM3NTY0ODQxNTc0NDIx.Xb6ZRw.H6I49oEJOhJzyVxSRwy9Ys4t12o")
