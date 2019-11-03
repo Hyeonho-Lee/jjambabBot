@@ -41,21 +41,6 @@ async def on_ready():
     search_day = ""
     while True:
         try:
-            if int(date_message.todayTimeH) == 6 and int(date_message.todayTimeM) == 30 and int(date_message.todayTimeS) == 5 and is_true == 0:
-                is_true = 1
-                last_index = calculator_message.last_index()
-                name,date_0,date_1,result_date,percent = calculator_message.calculator_all_load()
-                title, description = calculator_message.result_calculator("전역 보기")
-                test = "이름 | 전역일 | 입대일 | 일자 | 퍼센트"
-                test += "\n---------------------------------------------"
-                for i in range(0,last_index-1):
-                    text = "\n" + name[i] + " | " + date_1[i] + " | " + date_0[i] + " | " + result_date[i] + " | " + percent[i]
-                    test += text
-                    test += "\n---------------------------------------------"
-                test += "\n"
-                #print(test)
-                await channel.send(embed=set_embed(title, test))
-                is_true = 0
             if int(date_message.todayTimeH) == 7 and int(date_message.todayTimeM) == 0 and int(date_message.todayTimeS) == 5 and is_true == 0:
                 is_true = 1
                 last_index = jjambab_message.last_index()
@@ -425,4 +410,4 @@ async def on_message(message):
 
 #########################################################################
 
-client.run("NjIwMTM3NTY0ODQxNTc0NDIx.Xb5PZw._eRhrtMe7IOlZRs837mE3xX596g")
+client.run("NjIwMTM3NTY0ODQxNTc0NDIx.Xb6Gkg.mi6GZyd358Ft3fywJOjdVxv3zqc")
