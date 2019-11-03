@@ -60,10 +60,10 @@ def calendar(hour,minute,second,text):
 
 def sched_start():
 	scheduler("exec_cron","1")
-	scheduler("reload_data","2")
+	#scheduler("reload_data","2")
 
 def sched_stop():
 	kill_scheduler("1")
-	kill_scheduler("2")
+	#kill_scheduler("2")
 
 sched.start()
