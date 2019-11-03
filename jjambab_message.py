@@ -89,7 +89,6 @@ def last_index():
 
 def test_reload():
     data = sheet.get_all_records()
-    date = []
     breakfast = []
     lunch = []
     dinner = []
@@ -99,12 +98,12 @@ def test_reload():
         text = re.sub('[-=+,#/\?:^$.@*\"※~&%ㆍ!』\\‘|\(\)\[\]\<\>`\'…》{}]', '', test)
         text = text.replace("\\n", "Ⅰ")
         load_text = text.split()
-        date.append(str(load_text[1]))
+
         breakfast.append(str(load_text[3]))
         lunch.append(str(load_text[5]))
         dinner.append(str(load_text[7]))
 
-    return date,breakfast,lunch,dinner
+    return breakfast,lunch,dinner
                 
 def search_jjambab(result):
     date_message.reload_today()
