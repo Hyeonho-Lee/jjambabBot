@@ -4,6 +4,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 from pprint import pprint
 import os
 import re
+import datetime
 #---------------------#
 import date_message
 #---------------------#
@@ -53,7 +54,7 @@ def calculator_all_load():
         result_day = ((all_day - reduce_day) / all_day) * 100
         percent_day = str(round(result_day,2)) + "%"
 
-        result_date.append(str(reduce_day))
+        result_date.append(str(reduce_day.days) + "일")
         percent.append(str(percent_day))
         
     return name,date_0,date_1,result_date,percent
