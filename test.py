@@ -337,25 +337,6 @@ async def on_message(message):
         
     if message.content == "/전역 추가 %s,%s,%s"%(name,date_0,date_1):
         last_index = calculator_message.last_index()
-        result_date_0 = re.findall("\d", date_0)
-        search_date_0 = []
-        search_date_0.append(str(result_date_0[0]) + str(result_date_0[1]) + str(result_date_0[2]) + str(result_date_0[3]))
-        search_date_0.append(str(result_date_0[4]) + str(result_date_0[5]))
-        search_date_0.append(str(result_date_0[6]) + str(result_date_0[7]))
-        other_0 = date_message.other_date(int(search_date_0[0]),int(search_date_0[1]),int(search_date_0[2]))
-        result_date_1 = re.findall("\d", date_1)
-        search_date_1 = []
-        search_date_1.append(str(result_date_1[0]) + str(result_date_1[1]) + str(result_date_1[2]) + str(result_date_1[3]))
-        search_date_1.append(str(result_date_1[4]) + str(result_date_1[5]))
-        search_date_1.append(str(result_date_1[6]) + str(result_date_1[7]))
-        other_1 = date_message.other_date(int(search_date_1[0]),int(search_date_1[1]),int(search_date_1[2]))
-
-        other_2 = date_message.other_date(int(date_message.todayY),int(date_message.todayM),int(date_message.todayD))
-        all_day = date_message.reduce_date(other_1,other_0)
-        reduce_day = date_message.reduce_date(other_1,other_2)
-        result_day = ((all_day - reduce_day) / all_day) * 100
-        percent_day = str(round(result_day,2)) + "%"
-        #print(percent_day)
         calculator_message.calculator_write(name,date_0,date_1,"","",last_index+1)
         title, description = calculator_message.result_calculator("전역 추가")
         await message.channel.send(embed=set_embed(title, description))
@@ -405,4 +386,4 @@ async def on_message(message):
 
 #########################################################################
 
-client.run("NjIwMTM3NTY0ODQxNTc0NDIx.XcY4Jg.EmTlL0dyabeKG2axIvhspOpN6RA")
+client.run("NjIwMTM3NTY0ODQxNTc0NDIx.XcZTAA.LOOpxUxw1y5QnwHAIl2fSyRArEk")
