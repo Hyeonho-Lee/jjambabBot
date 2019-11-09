@@ -17,46 +17,48 @@ testSheets = ServiceAccountCredentials.from_json_keyfile_name("testSheets.json",
 
 clients = gspread.authorize(testSheets)
 sheet = clients.open("test_calculator").sheet1
-    
-data = sheet.get_all_records()
 
-def calculator_load(row):
-    result = sheet.row_values(row)
-    name = sheet.cell(row, 1).value
-    date_0 = sheet.cell(row, 2).value
-    date_1 = sheet.cell(row, 3).value
-    result_date = sheet.cell(row, 4).value
-    percent = sheet.cell(row, 5).value
-    return name,date_0,date_1,result_date,percent
+def write_calculator():
+    with open("./calculator.txt", 'w') as file:
+        c_data = str(data)
+        text = re.sub('[-=+,#/\?:^$.@*\"※~&%ㆍ!』\\‘|\(\)\[\]\<\>`\'…》{}]', '', c_data)
+        #text = text.replace("\\n", "/")
+        file.write(text)
+    return text
+
+data = sheet.get_all_records()
+c_data = write_calculator()
     
 def calculator_all_load():
     
     data = sheet.get_all_records()
-    
+    c_data = write_calculator()
+    load_text = c_data.split()
+
     name = []
     date_0 = []
     date_1 = []
     result_date = []
     percent = []
-    
-    for all_data in data:
-        test = str(all_data)
-        load_text = re.findall("\w+", test)
-        name.append(load_text[1])
-        date_0.append(str(load_text[3]) + "." + str(load_text[4]) + "." + str(load_text[5]))
-        date_1.append(str(load_text[7]) + "." + str(load_text[8]) + "." + str(load_text[9]))
-        
-        other_0 = date_message.other_date(int(load_text[3]),int(load_text[4]),int(load_text[5]))
-        other_1 = date_message.other_date(int(load_text[7]),int(load_text[8]),int(load_text[9]))
+	
+    for i in range(1,int(len(load_text)),6):
+        name.append(str(load_text[i]))
+    for i in range(3,int(len(load_text)),6):
+        date_0.append(str(load_text[i])[0:4] + "." + str(load_text[i])[4:6] + "." + str(load_text[i])[6:8])
+    for i in range(5,int(len(load_text)),6):
+        date_1.append(str(load_text[i])[0:4] + "." + str(load_text[i])[4:6] + "." + str(load_text[i])[6:8])
+
+    for i in range(0,int(len(load_text)/6)):
+        other_0 = date_message.other_date(int(str(date_0[i])[0:4]),int(str(date_0[i])[5:7]),int(str(date_0[i])[8:10]))
+        other_1 = date_message.other_date(int(str(date_1[i])[0:4]),int(str(date_1[i])[5:7]),int(str(date_1[i])[8:10]))
         other_2 = date_message.other_date(int(date_message.todayY),int(date_message.todayM),int(date_message.todayD))
         all_day = date_message.reduce_date(other_1,other_0)
         reduce_day = date_message.reduce_date(other_1,other_2)
         result_day = ((all_day - reduce_day) / all_day) * 100
         percent_day = str(round(result_day,2)) + "%"
-
         result_date.append(str(reduce_day.days) + "일")
         percent.append(str(percent_day))
-        
+    
     return name,date_0,date_1,result_date,percent
         
 def calculator_write(name, date_0, date_1, result_date, percent, row):
@@ -73,10 +75,9 @@ def calculator_update(name, date_0, date_1, result_date, percent, row):
     data = sheet.get_all_records()
 
 def last_index():
-    i = 1
     data = sheet.get_all_records()
-    for all_data in data:
-        i = i + 1
+    load_text = c_data.split()
+    i = int(len(load_text)/6) + 1
     return i
 
 def result_calculator(result):
