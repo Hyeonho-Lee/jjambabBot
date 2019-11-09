@@ -62,11 +62,11 @@ async def on_ready():
                         test = "===============점심===============\n" + lunch[i] + "\n================================="
                 await channel.send(embed=set_embed(title, test))
                 is_true = 0
-            if int(date_message.todayTimeH) == 17 and int(date_message.todayTimeM) == 0 and int(date_message.todayTimeS) == 35 and is_true == 0:
+            if int(date_message.todayTimeH) == 17 and int(date_message.todayTimeM) == 30 and int(date_message.todayTimeS) == 35 and is_true == 0:
                 is_true = 1
                 await channel.send(embed=set_embed("밥시간 알림", "저녁 30분전 입니다"))
                 is_true = 0
-            if int(date_message.todayTimeH) == 17 and int(date_message.todayTimeM) == 30 and int(date_message.todayTimeS) == 35 and is_true == 0:
+            if int(date_message.todayTimeH) == 18 and int(date_message.todayTimeM) == 0 and int(date_message.todayTimeS) == 35 and is_true == 0:
                 is_true = 1
                 last_index = jjambab_message.last_index()
                 breakfast,lunch,dinner = jjambab_message.test_reload()
@@ -377,4 +377,4 @@ async def on_message(message):
 
 #########################################################################
 
-client.run("NjIwMTM3NTY0ODQxNTc0NDIx.XcZ0jQ.wNA3lG6bysfuSHPR0oq7cT-mkIk")
+client.run("NjIwMTM3NTY0ODQxNTc0NDIx.XcZ4mA.OzSN-H1E1YxCynemTFCEnxN4Yi0")
