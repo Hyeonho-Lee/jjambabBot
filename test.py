@@ -377,4 +377,5 @@ async def on_message(message):
 
 #########################################################################
 
-client.run("NjIwMTM3NTY0ODQxNTc0NDIx.XcaL-Q.d-Jwtz6bo3vQ1K-d6zaZ-3f58XY")
+token = os.environ["TOKEN"]
+client.run(token)
