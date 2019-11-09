@@ -46,9 +46,6 @@ async def on_ready():
                     if i == int(date_message.todayD)-1:
                         test = "===============아침===============\n" + breakfast[i] + "\n================================="
                 await channel.send(embed=set_embed(title, test))
-                #jjambab_message.reload_jjambab()
-                #title, description = jjambab_message.result_jjambab("아침")
-                #await channel.send(embed=set_embed(title, description))
                 is_true = 0
             if int(date_message.todayTimeH) == 11 and int(date_message.todayTimeM) == 30 and int(date_message.todayTimeS) == 5 and is_true == 0:
                 is_true = 1
@@ -64,9 +61,6 @@ async def on_ready():
                     if i == int(date_message.todayD)-1:
                         test = "===============점심===============\n" + lunch[i] + "\n================================="
                 await channel.send(embed=set_embed(title, test))
-                #jjambab_message.reload_jjambab()
-                #title, description = jjambab_message.result_jjambab("점심")
-                #await channel.send(embed=set_embed(title, description))
                 is_true = 0
             if int(date_message.todayTimeH) == 17 and int(date_message.todayTimeM) == 0 and int(date_message.todayTimeS) == 35 and is_true == 0:
                 is_true = 1
@@ -82,9 +76,6 @@ async def on_ready():
                     if i == int(date_message.todayD)-1:
                         test = "===============저녁===============\n" + dinner[i] + "\n================================="
                 await channel.send(embed=set_embed(title, test))
-                #jjambab_message.reload_jjambab()
-                #title, description = jjambab_message.result_jjambab("저녁")
-                #await channel.send(embed=set_embed(title, description))
                 is_true = 0
             if int(date_message.todayTimeH) == 20 and int(date_message.todayTimeM) == 0 and int(date_message.todayTimeS) == 5 and is_true == 0:
                 is_true = 1
@@ -179,7 +170,7 @@ async def on_message(message):
     if message.content.startswith("/px"):
         title = "\n단결! px이용시간 입니다!!\n"
         description = "==========평일==========\n10:30 ~ 11:50\n13:00 ~ 17:00 \n 18:00 ~ 19:30\n==========휴일==========\n14:00 ~ 17:30\n========================"
-        await message.channel.send("/tts " + title + description)
+        await message.channel.send(title, description)
     
     #-----------------------------------------------------------------#
     
@@ -386,4 +377,4 @@ async def on_message(message):
 
 #########################################################################
 
-client.run("NjIwMTM3NTY0ODQxNTc0NDIx.XcZTAA.LOOpxUxw1y5QnwHAIl2fSyRArEk")
+client.run("NjIwMTM3NTY0ODQxNTc0NDIx.XcZ0jQ.wNA3lG6bysfuSHPR0oq7cT-mkIk")
