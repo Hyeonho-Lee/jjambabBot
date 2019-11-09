@@ -53,7 +53,7 @@ def calculator_all_load():
         other_1 = date_message.other_date(int(str(date_1[i])[0:4]),int(str(date_1[i])[5:7]),int(str(date_1[i])[8:10]))
         other_2 = date_message.other_date(int(date_message.todayY),int(date_message.todayM),int(date_message.todayD))
         all_day = date_message.reduce_date(other_1,other_0)
-        reduce_day = date_message.reduce_date(other_1,other_2)
+        reduce_day = date_message.reduce_date(other_2,other_1)
         result_day = ((all_day - reduce_day) / all_day) * 100
         percent_day = str(round(result_day,2)) + "%"
         result_date.append(str(reduce_day.days) + "일")
