@@ -17,31 +17,47 @@ testSheets = ServiceAccountCredentials.from_json_keyfile_name("testSheets.json",
 
 clients = gspread.authorize(testSheets)
 sheet = clients.open("2019-11 jjambab").sheet1
-    
+
+def write_jjambab():
+    with open("./jjambab_11.txt", 'w') as file:
+        j_data = str(data)
+        text = re.sub('[-=+,#/\?:^$.@*\"※~&%ㆍ!』\\‘|\(\)\[\]\<\>`\'…》{}]', '', j_data)
+        text = text.replace("\\n", "/")
+        file.write(text)
+    return text
+
+def read_jjambab():
+    with open("./jjambab_11.txt", 'r') as file:
+        j_data = file.readlines()
+    return 
+
 data = sheet.get_all_records()
+j_data = write_jjambab()
 
 def last_index():
-    i = 1
     data = sheet.get_all_records()
-    for all_data in data:
-        i = i + 1
+    load_text = j_data.split()
+    i = int(len(load_text)/6) + 1
+    #i = 1
+    #for all_data in data:
+        #i = i + 1
+    #print(i)
     return i
 
 def test_reload():
     data = sheet.get_all_records()
+    load_text = j_data.split()
+    #print(int(len(load_text)/6))
     breakfast = []
     lunch = []
     dinner = []
-
-    for all_data in data:
-        test = str(all_data)
-        text = re.sub('[-=+,#/\?:^$.@*\"※~&%ㆍ!』\\‘|\(\)\[\]\<\>`\'…》{}]', '', test)
-        text = text.replace("\\n", "/")
-        load_text = text.split()
-
-        breakfast.append(str(load_text[1]))
-        lunch.append(str(load_text[3]))
-        dinner.append(str(load_text[5]))
+	
+    for i in range(1,int(len(load_text)),6):
+        breakfast.append(str(load_text[i]))
+    for i in range(3,int(len(load_text)),6):
+        lunch.append(str(load_text[i]))
+    for i in range(5,int(len(load_text)),6):
+        dinner.append(str(load_text[i]))
 
     return breakfast,lunch,dinner
                 
