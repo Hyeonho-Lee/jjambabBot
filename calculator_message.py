@@ -49,8 +49,12 @@ def calculator_all_load():
         date_1.append(str(load_text[i])[0:4] + "." + str(load_text[i])[4:6] + "." + str(load_text[i])[6:8])
 
     for i in range(0,int(len(load_text)/6)):
-        other_0 = date_message.other_date(int(str(date_0[i])[0:4]),int(str(date_0[i])[5:7]),int(str(date_0[i])[8:10]))
-        other_1 = date_message.other_date(int(str(date_1[i])[0:4]),int(str(date_1[i])[5:7]),int(str(date_1[i])[8:10]))
+        date_0s = date_0[i].replace(".", " ")
+        date_0s = date_0s.split()
+        other_0 = date_message.other_date(int(date_0s[0]),int(date_0s[1]),int(date_0s[2]))
+        date_1s = date_1[i].replace(".", " ")
+        date_1s = date_1s.split()
+        other_1 = date_message.other_date(int(date_1s[0]),int(date_1s[1]),int(date_1s[2]))
         other_2 = date_message.other_date(int(date_message.todayY),int(date_message.todayM),int(date_message.todayD))
         all_day = date_message.reduce_date(other_1,other_0)
         reduce_day = -1 * date_message.reduce_date(other_2,other_1)
