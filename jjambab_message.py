@@ -26,11 +26,6 @@ def write_jjambab():
         file.write(text)
     return text
 
-def read_jjambab():
-    with open("./jjambab_11.txt", 'r') as file:
-        j_data = file.readlines()
-    return 
-
 data = sheet.get_all_records()
 j_data = write_jjambab()
 
@@ -38,16 +33,12 @@ def last_index():
     data = sheet.get_all_records()
     load_text = j_data.split()
     i = int(len(load_text)/6) + 1
-    #i = 1
-    #for all_data in data:
-        #i = i + 1
-    #print(i)
     return i
 
 def test_reload():
     data = sheet.get_all_records()
     load_text = j_data.split()
-    #print(int(len(load_text)/6))
+
     breakfast = []
     lunch = []
     dinner = []
