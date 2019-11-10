@@ -50,14 +50,12 @@ def test_reload():
     return breakfast,lunch,dinner
                 
 def search_jjambab(result):
-    date_message.reload_today()
     search = int(result)
     search_result = "단결! " + str(date_message.todayM) + "월" + str(search) + "일" + " 짬밥입니다!!\n"
     searchs_result = ""
     return search_result, searchs_result
 
 def result_jjambab(result):
-    date_message.reload_today()
     if result == "오늘":
         title = "단결! " + str(date_message.todayM) + "월" + str(date_message.todayD) + "일" + " 짬밥입니다!!\n"
         description = ""
