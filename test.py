@@ -52,7 +52,7 @@ async def on_ready():
                 is_true = 1
                 await channel.send(embed=set_embed("밥시간 알림", "점심 30분전 입니다"))
                 is_true = 0
-            if int(date_message.todayTimeH) == 19 and int(date_message.todayTimeM) == 7 and int(date_message.todayTimeS) == 35 and is_true == 0:
+            if int(date_message.todayTimeH) == 12 and int(date_message.todayTimeM) == 0 and int(date_message.todayTimeS) == 35 and is_true == 0:
                 is_true = 1
                 last_index = jjambab_message.last_index()
                 breakfast,lunch,dinner = jjambab_message.test_reload()
@@ -64,11 +64,11 @@ async def on_ready():
                         break
                 await channel.send(embed=set_embed(title, test))
                 is_true = 0
-            if int(date_message.todayTimeH) == 19 and int(date_message.todayTimeM) == 5 and int(date_message.todayTimeS) == 35 and is_true == 0:
+            if int(date_message.todayTimeH) == 17 and int(date_message.todayTimeM) == 10 and int(date_message.todayTimeS) == 35 and is_true == 0:
                 is_true = 1
                 await channel.send(embed=set_embed("밥시간 알림", "저녁 30분전 입니다"))
                 is_true = 0
-            if int(date_message.todayTimeH) == 19 and int(date_message.todayTimeM) == 6 and int(date_message.todayTimeS) == 35 and is_true == 0:
+            if int(date_message.todayTimeH) == 17 and int(date_message.todayTimeM) == 40 and int(date_message.todayTimeS) == 35 and is_true == 0:
                 is_true = 1
                 last_index = jjambab_message.last_index()
                 breakfast,lunch,dinner = jjambab_message.test_reload()
@@ -87,15 +87,6 @@ async def on_ready():
             if int(date_message.todayTimeH) == 20 and int(date_message.todayTimeM) == 30 and int(date_message.todayTimeS) == 5 and is_true == 0:
                 is_true = 1
                 await channel.send(embed=set_embed("청소시간 알림", " 개인임무분담제에 의한 청소를 해야합니다"))
-                is_true = 0
-            if int(date_message.todayTimeH) == 19 and int(date_message.todayTimeM) == 6 and int(date_message.todayTimeS) == 58 and is_true == 0:
-                is_true = 1
-                title = "단결! 봇을 재시작 하겠습니다!!"
-                description = "==========5초뒤 재시작=========="
-                await channel.send(embed=set_embed(title, description))
-                scheduler_message.sched_stop()
-                scheduler_message.sched_shutdown()
-                await client.logout()
                 is_true = 0
         except:
             is_true = 0
@@ -136,9 +127,6 @@ async def on_message(message):
             if i == int(search_day)-1:
                 test = "===============아침===============\n" + breakfast[i] + "\n===============점심===============\n" + lunch[i] + "\n===============저녁===============\n" + dinner[i] + "\n================================="
         await message.channel.send(embed=set_embed(title, test))
-        #jjambab_message.reload_jjambab()
-        #title, description = jjambab_message.search_jjambab(search_day)
-        #await message.channel.send(embed=set_embed(title, description))
     
     if message.content.startswith("/오늘 짬밥"):
         last_index = jjambab_message.last_index()
@@ -149,9 +137,6 @@ async def on_message(message):
             if i == int(date_message.todayD)-1:
                 test = "===============아침===============\n" + breakfast[i] + "\n===============점심===============\n" + lunch[i] + "\n===============저녁===============\n" + dinner[i] + "\n================================="
         await message.channel.send(embed=set_embed(title, test))
-        #jjambab_message.reload_jjambab()
-        #title, description = jjambab_message.result_jjambab("오늘")
-        #await message.channel.send(embed=set_embed(title, description))
         
     if message.content.startswith("/내일 짬밥"):
         last_index = jjambab_message.last_index()
@@ -162,9 +147,6 @@ async def on_message(message):
             if i == int(date_message.tomorrowD)-1:
                 test = "===============아침===============\n" + breakfast[i] + "\n===============점심===============\n" + lunch[i] + "\n===============저녁===============\n" + dinner[i] + "\n================================="
         await message.channel.send(embed=set_embed(title, test))
-        #jjambab_message.reload_jjambab()
-        #title, description = jjambab_message.result_jjambab("내일")
-        #await message.channel.send(embed=set_embed(title, description))
         
     if message.content.startswith("/어제 짬밥"):
         last_index = jjambab_message.last_index()
@@ -175,9 +157,6 @@ async def on_message(message):
             if i == int(date_message.yesterdayD)-1:
                 test = "===============아침===============\n" + breakfast[i] + "\n===============점심===============\n" + lunch[i] + "\n===============저녁===============\n" + dinner[i] + "\n================================="
         await message.channel.send(embed=set_embed(title, test))
-        #jjambab_message.reload_jjambab()
-        #title, description = jjambab_message.result_jjambab("어제")
-        #await message.channel.send(embed=set_embed(title, description))
         
     if message.content.startswith("/px"):
         title = "\n단결! px이용시간 입니다!!\n"
