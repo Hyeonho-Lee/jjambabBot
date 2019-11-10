@@ -1,4 +1,7 @@
-discord==0.16.12
+git+https://github.com/Rapptz/discord.py@rewrite
+dnspython
+PyNaCl
+async-timeout
 oauth2client
 gspread
 apscheduler
