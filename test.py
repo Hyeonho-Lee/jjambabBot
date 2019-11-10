@@ -92,7 +92,7 @@ async def on_ready():
                 is_true = 1
                 title = "단결! 봇을 재시작 하겠습니다!!"
                 description = "==========5초뒤 재시작=========="
-                await message.channel.send(embed=set_embed(title, description))
+                await channel.send(embed=set_embed(title, description))
                 scheduler_message.sched_stop()
                 scheduler_message.sched_shutdown()
                 await client.logout()
