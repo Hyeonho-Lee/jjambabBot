@@ -2,6 +2,7 @@ git+https://github.com/Rapptz/discord.py@rewrite
 dnspython
 PyNaCl
 async-timeout
+pandas
 oauth2client
 gspread
 apscheduler
