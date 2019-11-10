@@ -52,7 +52,7 @@ async def on_ready():
                 is_true = 1
                 await channel.send(embed=set_embed("밥시간 알림", "점심 30분전 입니다"))
                 is_true = 0
-            if int(date_message.todayTimeH) == 12 and int(date_message.todayTimeM) == 0 and int(date_message.todayTimeS) == 35 and is_true == 0:
+            if int(date_message.todayTimeH) == 19 and int(date_message.todayTimeM) == 7 and int(date_message.todayTimeS) == 35 and is_true == 0:
                 is_true = 1
                 last_index = jjambab_message.last_index()
                 breakfast,lunch,dinner = jjambab_message.test_reload()
@@ -64,11 +64,11 @@ async def on_ready():
                         break
                 await channel.send(embed=set_embed(title, test))
                 is_true = 0
-            if int(date_message.todayTimeH) == 18 and int(date_message.todayTimeM) == 54 and int(date_message.todayTimeS) == 35 and is_true == 0:
+            if int(date_message.todayTimeH) == 19 and int(date_message.todayTimeM) == 5 and int(date_message.todayTimeS) == 35 and is_true == 0:
                 is_true = 1
                 await channel.send(embed=set_embed("밥시간 알림", "저녁 30분전 입니다"))
                 is_true = 0
-            if int(date_message.todayTimeH) == 18 and int(date_message.todayTimeM) == 55 and int(date_message.todayTimeS) == 35 and is_true == 0:
+            if int(date_message.todayTimeH) == 19 and int(date_message.todayTimeM) == 6 and int(date_message.todayTimeS) == 35 and is_true == 0:
                 is_true = 1
                 last_index = jjambab_message.last_index()
                 breakfast,lunch,dinner = jjambab_message.test_reload()
@@ -87,6 +87,15 @@ async def on_ready():
             if int(date_message.todayTimeH) == 20 and int(date_message.todayTimeM) == 30 and int(date_message.todayTimeS) == 5 and is_true == 0:
                 is_true = 1
                 await channel.send(embed=set_embed("청소시간 알림", " 개인임무분담제에 의한 청소를 해야합니다"))
+                is_true = 0
+            if int(date_message.todayTimeH) == 19 and int(date_message.todayTimeM) == 6 and int(date_message.todayTimeS) == 58 and is_true == 0:
+                is_true = 1
+                title = "단결! 봇을 재시작 하겠습니다!!"
+                description = "==========5초뒤 재시작=========="
+                await message.channel.send(embed=set_embed(title, description))
+                scheduler_message.sched_stop()
+                scheduler_message.sched_shutdown()
+                await client.logout()
                 is_true = 0
         except:
             is_true = 0
@@ -246,9 +255,8 @@ async def on_message(message):
     #-----------------------------------------------------------------#
     
     if message.content == "/종료":
-        todaySeconds = date_message.reload_today()
         title = "단결! 봇을 종료하겠습니다!!"
-        description = "==========0초뒤 종료=========="
+        description = "==========5초뒤 재시작=========="
         await message.channel.send(embed=set_embed(title, description))
         scheduler_message.sched_stop()
         scheduler_message.sched_shutdown()
