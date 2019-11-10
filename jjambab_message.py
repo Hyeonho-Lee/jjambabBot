@@ -30,15 +30,12 @@ data = sheet.get_all_records()
 j_data = write_jjambab()
 
 def last_index():
-    data = sheet.get_all_records()
     load_text = j_data.split()
     i = int(len(load_text)/6) + 1
     return i
 
 def test_reload():
-    data = sheet.get_all_records()
     load_text = j_data.split()
-
     breakfast = []
     lunch = []
     dinner = []
