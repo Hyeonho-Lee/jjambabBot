@@ -1,0 +1,5 @@
+discord==0.16.12
+oauth2client
+gspread
+apscheduler
+pytz
