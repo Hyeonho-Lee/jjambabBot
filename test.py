@@ -170,7 +170,7 @@ async def on_message(message):
     if message.content.startswith("/px"):
         title = "\n단결! px이용시간 입니다!!\n"
         description = "==========평일==========\n10:30 ~ 11:50\n13:00 ~ 17:00 \n 18:00 ~ 19:30\n==========휴일==========\n14:00 ~ 17:30\n========================"
-        await message.channel.send(title, description)
+        await message.channel.send(embed=set_embed(title, description))
     
     #-----------------------------------------------------------------#
     
