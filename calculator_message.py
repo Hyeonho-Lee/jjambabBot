@@ -26,11 +26,21 @@ def write_calculator():
         file.write(text)
     return text
 
+def record_all():
+    date_message.reload_today()
+    scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
+    testSheets = ServiceAccountCredentials.from_json_keyfile_name("testSheets.json", scope)
+    clients = gspread.authorize(testSheets)
+    sheet = clients.open("test_calculator").sheet1
+    data = sheet.get_all_records()
+    c_data = write_calculator()
+    return data,c_data
+
 data = sheet.get_all_records()
 c_data = write_calculator()
     
 def calculator_all_load():
-    
+
     data = sheet.get_all_records()
     c_data = write_calculator()
     load_text = c_data.split()
@@ -67,15 +77,18 @@ def calculator_all_load():
         
 def calculator_write(name, date_0, date_1, result_date, percent, row):
     sheet.insert_row([name, date_0, date_1, result_date, percent], row)
+    data,c_data = record_all()
     data = sheet.get_all_records()
     
 def calculator_delete(row):
     int_row = int(row)
     sheet.delete_row(int_row)
+    data,c_data = record_all()
     data = sheet.get_all_records()
 	
 def calculator_update(name, date_0, date_1, result_date, percent, row):
     sheet.update_row([name, date_0, date_1, result_date, percent], row)
+    data,c_data = record_all()
     data = sheet.get_all_records()
 
 def last_index():
@@ -95,7 +108,7 @@ def result_calculator(result):
         title = "단결! 현제 남은 복무일수 입니다!!"
         description = "==========준비된 근무=========="
     elif result == "전역 삭제":
-        title = "단결! 마지막 근무를 삭제하였습니다!!"
+        title = "단결! 마지막 전역을 삭제하였습니다!!"
         description = "==========삭제 완료=========="
     elif result == "전역 삭제 실패":
         title = "단결! 여기부터는 삭제불가입니다!!"
