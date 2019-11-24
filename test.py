@@ -48,11 +48,11 @@ async def on_ready():
                         break
                 await channel.send(embed=set_embed(title, test))
                 is_true = 0
-            if int(date_message.todayTimeH) == 11 and int(date_message.todayTimeM) == 30 and int(date_message.todayTimeS) == 5 and is_true == 0:
+            if int(date_message.todayTimeH) == 11 and int(date_message.todayTimeM) == 10 and int(date_message.todayTimeS) == 5 and is_true == 0:
                 is_true = 1
                 await channel.send(embed=set_embed("밥시간 알림", "점심 30분전 입니다"))
                 is_true = 0
-            if int(date_message.todayTimeH) == 12 and int(date_message.todayTimeM) == 0 and int(date_message.todayTimeS) == 35 and is_true == 0:
+            if int(date_message.todayTimeH) == 11 and int(date_message.todayTimeM) == 40 and int(date_message.todayTimeS) == 35 and is_true == 0:
                 is_true = 1
                 last_index = jjambab_message.last_index()
                 breakfast,lunch,dinner = jjambab_message.test_reload()
@@ -82,11 +82,15 @@ async def on_ready():
                 is_true = 0
             if int(date_message.todayTimeH) == 20 and int(date_message.todayTimeM) == 0 and int(date_message.todayTimeS) == 5 and is_true == 0:
                 is_true = 1
-                await channel.send(embed=set_embed("청소시간 알림", " 개인임무분담제에 의한 청소 30분전 입니다"))
+                await channel.send(embed=set_embed("청소시간 알림", "개인임무분담제에 의한 청소 30분전 입니다"))
                 is_true = 0
             if int(date_message.todayTimeH) == 20 and int(date_message.todayTimeM) == 30 and int(date_message.todayTimeS) == 5 and is_true == 0:
                 is_true = 1
-                await channel.send(embed=set_embed("청소시간 알림", " 개인임무분담제에 의한 청소를 해야합니다"))
+                await channel.send(embed=set_embed("청소시간 알림", "개인임무분담제에 의한 청소를 해야합니다"))
+                is_true = 0
+            if int(date_message.todayTimeH) == 21 and int(date_message.todayTimeM) == 0 and int(date_message.todayTimeS) == 5 and is_true == 0:
+                is_true = 1
+                await channel.send(embed=set_embed("폰수거 알림", "폰을 내셔야합니다"))
                 is_true = 0
         except:
             is_true = 0
@@ -368,5 +372,5 @@ async def on_message(message):
 
 #########################################################################
 
-#token = os.environ["TOKEN"]
-client.run()
+token = os.environ["TOKEN"]
+client.run(token)
