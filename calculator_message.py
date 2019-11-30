@@ -26,23 +26,10 @@ def write_calculator():
         file.write(text)
     return text
 
-def record_all():
-    date_message.reload_today()
-    scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
-    testSheets = ServiceAccountCredentials.from_json_keyfile_name("testSheets.json", scope)
-    clients = gspread.authorize(testSheets)
-    sheet = clients.open("test_calculator").sheet1
-    data = sheet.get_all_records()
-    c_data = write_calculator()
-    return data,c_data
-
 data = sheet.get_all_records()
 c_data = write_calculator()
     
 def calculator_all_load():
-
-    data = sheet.get_all_records()
-    c_data = write_calculator()
     load_text = c_data.split()
 
     name = []
@@ -77,22 +64,15 @@ def calculator_all_load():
         
 def calculator_write(name, date_0, date_1, result_date, percent, row):
     sheet.insert_row([name, date_0, date_1, result_date, percent], row)
-    data,c_data = record_all()
-    data = sheet.get_all_records()
     
 def calculator_delete(row):
     int_row = int(row)
     sheet.delete_row(int_row)
-    data,c_data = record_all()
-    data = sheet.get_all_records()
 	
 def calculator_update(name, date_0, date_1, result_date, percent, row):
     sheet.update_row([name, date_0, date_1, result_date, percent], row)
-    data,c_data = record_all()
-    data = sheet.get_all_records()
 
 def last_index():
-    data = sheet.get_all_records()
     load_text = c_data.split()
     i = int(len(load_text)/6) + 1
     return i
