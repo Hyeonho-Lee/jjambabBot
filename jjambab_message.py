@@ -16,10 +16,10 @@ scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/aut
 testSheets = ServiceAccountCredentials.from_json_keyfile_name("testSheets.json", scope)
 
 clients = gspread.authorize(testSheets)
-sheet = clients.open("2019-12 jjambab").sheet1
+sheet = clients.open("2019-13 jjambab").sheet1
 
 def write_jjambab():
-    with open("./jjambab_12.txt", 'w+t') as file:
+    with open("./jjambab_13.txt", 'w+t') as file:
         j_data = str(data)
         text = re.sub('[-=+,#/\?:^$.@*\"※~&%ㆍ!』\\‘|\(\)\[\]\<\>`\'…》{}]', '', j_data)
         text = text.replace("\\n", "/")
