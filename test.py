@@ -129,7 +129,7 @@ async def on_message(message):
         title, description = jjambab_message.search_jjambab(search_day)
         test = ""
         for i in range(1,last_index):
-            if i == int(search_day)+1-1:
+            if i == int(search_day)-1:
                 test = "===============아침===============\n" + breakfast[i] + "\n===============점심===============\n" + lunch[i] + "\n===============저녁===============\n" + dinner[i] + "\n================================="
         await message.channel.send(embed=set_embed(title, test))
     
