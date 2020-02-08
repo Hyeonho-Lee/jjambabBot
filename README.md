@@ -9,10 +9,10 @@
 
 ### 명령어
 
-![command](https://i.imgur.com/aZgffa1.png)\n
+<img src="https://i.imgur.com/aZgffa1.png" width="450px" height="300px"></img><br/>
 /? 사용가능한 모든 명령어를 출력해줍니다.
 
-### 기타
+### 링크
 
 * [Discord server-jjambabBot](https://discord.gg/hvN6Ndn)
 * [Project license](LICENSE)
