@@ -9,8 +9,11 @@
 
 ### 명령어
 
-<img src="https://i.imgur.com/aZgffa1.png"></img><br/>
+메시지 앞에 "/"을 붙이고 사용한다(예제: /오늘 짬밥)
+<br/><img src="https://i.imgur.com/oNwzXxU.png"></img>
+
 /? 사용가능한 모든 명령어를 출력해줍니다.
+<br/><img src="https://i.imgur.com/aZgffa1.png"></img>
 
 ### 링크
 
