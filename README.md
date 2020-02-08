@@ -12,8 +12,9 @@
 
 메시지 앞에 "/"를 붙여 사용합니다.(ex./오늘 짬밥)
 <img src="https://i.imgur.com/oNwzXxU.png"></img>
+
 /? 사용가능한 모든 명령어를 출력해줍니다.
-<a href="https://imgur.com/aZgffa1"><img src="https://i.imgur.com/aZgffa1.png" title="source: imgur.com" /></a>
+<img src="https://i.imgur.com/aZgffa1.png"></img>
 
 ### 기타
 
