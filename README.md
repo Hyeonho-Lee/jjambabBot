@@ -10,7 +10,7 @@
 ### 명령어
 
 /? 사용가능한 모든 명령어를 출력해줍니다.
-![command](https://i.imgur.com/aZgffa1.png)
+![command](https://i.imgur.com/aZgffa1.png){:.alignleft}
 
 ### 기타
 
