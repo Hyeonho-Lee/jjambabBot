@@ -5,11 +5,13 @@
 짬밥봇은 [discord.py](https://github.com/Rapptz/discord.py)라이브러리를 사용하여 만들었습니다. 군 복무기간중 연습삼아 처음 만든 디스코드봇 이며 공부를 목적으로 제작 하였기에 완성도, 최적화 면에서는 많이 부족합니다. 기능은 특정 시간이 되면 구글 스프레드 시트의 내용(짬밥)을 읽어와 불러주는 식으로 구성 되있습니다.
 
 ### 설정
+
 서버는 [Heroku](https://heroku.com)를 이용하기에 설정파일인 `Procfile`(worker: 실행할 파일), `requirements.txt`(다운 받을 api들), `runtume.txt`(python-3.7.6)등이 있습니다.
 
 ### 명령어
+
+![command](https://i.imgur.com/aZgffa1.png)
 /? 사용가능한 모든 명령어를 출력해줍니다.
-![command](https://i.imgur.com/aZgffa1.png){:.alignleft}
 
 ### 기타
 
