@@ -9,14 +9,11 @@
 서버는 [Heroku](https://heroku.com)를 이용하기에 설정파일인 `Procfile`(worker: 실행할 파일), `requirements.txt`(다운 받을 api들), `runtume.txt`(python-3.7.6)등이 있습니다.
 
 ### 명령어
-
-![command](https://i.imgur.com/oNwzXxU.png)
 메시지 앞에 "/"를 붙여 사용합니다.(ex./오늘 짬밥)
+![command](https://i.imgur.com/oNwzXxU.png)
 
-<div>
 /? 사용가능한 모든 명령어를 출력해줍니다.
-<img src="https://i.imgur.com/aZgffa1.png"></img>
-</div>
+![command](https://i.imgur.com/aZgffa1.png)
 
 ### 기타
 
