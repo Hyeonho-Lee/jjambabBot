@@ -9,7 +9,7 @@
 
 ### 명령어
 
-<img src="https://i.imgur.com/aZgffa1.png" width="450px" height="300px"></img><br/>
+<img src="https://i.imgur.com/aZgffa1.png"></img><br/>
 /? 사용가능한 모든 명령어를 출력해줍니다.
 
 ### 링크
