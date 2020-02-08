@@ -10,11 +10,15 @@
 
 ### 명령어
 
+<div>
 메시지 앞에 "/"를 붙여 사용합니다.(ex./오늘 짬밥)
 <img src="https://i.imgur.com/oNwzXxU.png"></img>
+</div>
 
+<div>
 /? 사용가능한 모든 명령어를 출력해줍니다.
 <img src="https://i.imgur.com/aZgffa1.png"></img>
+</div>
 
 ### 기타
 
