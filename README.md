@@ -11,7 +11,7 @@
 ### 명령어
 
 /? 사용가능한 모든 명령어를 출력해줍니다.
-![command](https://i.imgur.com/aZgffa1.png){: width="200" height="200"}
+![command](https://i.imgur.com/aZgffa1.png){: width="200px" height="200px"}
 
 ### 기타
 
