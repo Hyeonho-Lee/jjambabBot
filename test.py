@@ -91,6 +91,15 @@ async def on_ready():
             if int(date_message.todayTimeH) == 21 and int(date_message.todayTimeM) == 0 and int(date_message.todayTimeS) == 5 and is_true == 0:
                 is_true = 1
                 await channel.send(embed=set_embed("폰수거 알림", "폰을 내셔야합니다"))
+		last_index = jjambab_message.last_index()
+                breakfast,lunch,dinner = jjambab_message.test_reload()
+                title, description = jjambab_message.result_jjambab("저녁")
+                test = ""
+                for i in range(1,last_index):
+                    if i == int(date_message.todayD)-1:
+                        test = "===============내일 아침===============\n" + lunch[i] + "\n================================="
+                        break
+                await channel.send(embed=set_embed(title, test))
                 is_true = 0
         except:
             is_true = 0
