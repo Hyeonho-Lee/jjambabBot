@@ -17,5 +17,5 @@
 
 ### 링크
 
-* [Discord server-jjambabBot](https://discord.gg/hvN6Ndn)
+* [Discord server-jjambabBot](https://discord.gg/4vzmKG9)
 * [Project license](LICENSE)
