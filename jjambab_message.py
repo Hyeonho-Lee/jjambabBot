@@ -75,6 +75,6 @@ def result_jjambab(result):
         title = "단결! 오늘의 저녁밥을 불러드렸습니다!"
         description = ""
     if result == "내일아침":
-        title = "단결! 내일의 밥을 불러드렸습니다!"
+        title = "단결! 내일의 아침밥을 불러드렸습니다!"
         description = ""
     return title, description
