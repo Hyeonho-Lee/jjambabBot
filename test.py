@@ -9,6 +9,7 @@ import jjambab_message
 import work_message
 import calculator_message
 import scheduler_message
+import weather_message
 #---------------------#
 
 client = discord.Client()
@@ -177,6 +178,18 @@ async def on_message(message):
         description = "==========평일==========\n10:30 ~ 11:50\n13:00 ~ 17:00 \n 18:00 ~ 19:30\n==========휴일==========\n 10:00 ~ 15:00 \n========================"
         await message.channel.send(embed=set_embed(title, description))
     
+    #-----------------------------------------------------------------#
+
+    if message.content.startswith("/오늘 날씨"):
+        today_weather, tomorrow_weather = get_weather()
+        title = "\n단결! 오늘 날씨 입니다!!\n"
+        await message.channel.send(embed=set_embed(title, today_weather))
+
+    if message.content.startswith("/내일 날씨"):
+        today_weather, tomorrow_weather = get_weather()
+        title = "\n단결! 내일 날씨 입니다!!\n"
+        await message.channel.send(embed=set_embed(title, tomorrow_weather))
+
     #-----------------------------------------------------------------#
     
     index = ""
