@@ -179,7 +179,7 @@ async def on_message(message):
         await message.channel.send(embed=set_embed(title, description))
     
     #-----------------------------------------------------------------#
-
+"""
     if message.content.startswith("/오늘 날씨"):
         today_weather, tomorrow_weather = get_weather()
         title = "\n단결! 오늘 날씨 입니다!!\n"
@@ -189,7 +189,7 @@ async def on_message(message):
         today_weather, tomorrow_weather = get_weather()
         title = "\n단결! 내일 날씨 입니다!!\n"
         await message.channel.send(embed=set_embed(title, tomorrow_weather))
-
+"""
     #-----------------------------------------------------------------#
     
     index = ""
