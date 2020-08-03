@@ -16,7 +16,7 @@ scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/aut
 testSheets = ServiceAccountCredentials.from_json_keyfile_name("testSheets.json", scope)
 
 clients = gspread.authorize(testSheets)
-sheet = clients.open("2020-06 jjambab").sheet1
+sheet = clients.open("2020-08 jjambab").sheet1
 
 def write_jjambab():
     with open("./jjambab_2020_06.txt", 'w+t') as file:
